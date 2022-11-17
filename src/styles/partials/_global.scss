@@ -1,0 +1,18 @@
+@use '../partials/colors' as *;
+@use '../partials/mixins' as *;
+
+*,
+*::before,
+*::after,
+button,
+input,
+div,
+img,
+h1,
+video,
+article,
+section {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

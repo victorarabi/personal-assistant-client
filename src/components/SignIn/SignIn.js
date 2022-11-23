@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './SignIn.scss';
 import axios from 'axios';
 
+//fetches server_URL from environment Variable
 const SERVER_URL = process.env.SERVER_URL;
 console.log(SERVER_URL);
 
@@ -13,9 +14,25 @@ export default function SignIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //Function that handles the submit
+  //Function that POST login data to the sever
   function serverLogin(username, password) {
-    axios.post(`${SERVER_URL}`);
+    axios
+      .post(
+        `${SERVER_URL}/auth/login`,
+        {
+          username: username,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   //function that handles changes to the username form input
@@ -26,6 +43,11 @@ export default function SignIn() {
   //function that handles changes to the password form input
   function handlePasswordForm(e) {
     setPassword(e.target.value);
+  }
+
+  //Function that handles submit
+  function handleSubmit(e) {
+    serverLogin(username, password);
   }
 
   return (
@@ -62,7 +84,7 @@ export default function SignIn() {
           value={password}
           onChange={handlePasswordForm}
         />
-        <button className="sign-in__btn" type="submit">
+        <button className="sign-in__btn" type="submit" onSubmit={handleSubmit}>
           Sign In
         </button>
       </form>

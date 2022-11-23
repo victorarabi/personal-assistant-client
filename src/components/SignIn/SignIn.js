@@ -3,8 +3,7 @@ import './SignIn.scss';
 import axios from 'axios';
 
 //fetches server_URL from environment Variable
-const SERVER_URL = process.env.SERVER_URL;
-console.log(SERVER_URL);
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 /**
  * Component used to SignIn to the app using password

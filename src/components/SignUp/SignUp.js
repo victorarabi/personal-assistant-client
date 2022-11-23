@@ -3,8 +3,7 @@ import './SignUp.scss';
 import axios from 'axios';
 
 //fetches server_URL from environment Variable
-const SERVER_URL = process.env.SERVER_URL;
-console.log(SERVER_URL);
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 /**
  * Component used to SignUp to the app, creating an user with name, username using password
@@ -75,13 +74,13 @@ export default function SignUp() {
     <div className="sign-up">
       <h3>Sign Up</h3>
       <form className="sign-up__form">
-        <label className="sign-up__label" htmlFor="name">
+        <label className="sign-up__label" htmlFor="signupname">
           Name:
         </label>
         <input
           className="sign-up__input"
-          id="name"
-          name="name"
+          id="signupname"
+          name="signupname"
           type="text"
           required
           minLength="6"
@@ -90,13 +89,13 @@ export default function SignUp() {
           value={name}
           onChange={handleNameForm}
         />
-        <label className="sign-up__label" htmlFor="username">
+        <label className="sign-up__label" htmlFor="signupusername">
           Username:
         </label>
         <input
           className="sign-up__input"
-          id="username"
-          name="username"
+          id="signupusername"
+          name="signupusername"
           type="text"
           required
           minLength="6"

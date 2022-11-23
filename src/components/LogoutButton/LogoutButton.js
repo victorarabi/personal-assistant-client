@@ -1,7 +1,7 @@
 import './LogoutButton.scss';
 
 //fetches server_URL from environment Variable
-const SERVER_URL = process.env.SERVER_URL;
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 /**
  * Component Button used to logout from the app.

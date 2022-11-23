@@ -18,7 +18,7 @@ export default function SignIn() {
   function serverLogin(username, password) {
     axios
       .post(
-        `${SERVER_URL}/auth/login`,
+        `${SERVER_URL}/auth/local/login`,
         {
           username: username,
           password: password,

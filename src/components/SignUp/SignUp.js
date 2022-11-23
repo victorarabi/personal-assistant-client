@@ -73,7 +73,7 @@ export default function SignUp() {
 
   return (
     <div className="sign-up">
-      <h3>Sign In</h3>
+      <h3>Sign Up</h3>
       <form className="sign-up__form">
         <label className="sign-up__label" htmlFor="name">
           Name:

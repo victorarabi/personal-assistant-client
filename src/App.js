@@ -1,15 +1,29 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
 import Header from './components/Header/Header';
-import LoginCard from './components/LoginCard/LoginCard';
+import HomePage from './pages/HomePage/HomePage';
 import './App.scss';
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profileData, setProfileData] = useState(null);
+
   return (
     <Router>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        profileData={profileData}
+        setProfileData={setProfileData}
+      />
       <Switch>
         <Route path="/">
-          <LoginCard />
+          <HomePage
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            profileData={profileData}
+            setProfileData={setProfileData}
+          />
         </Route>
       </Switch>
     </Router>

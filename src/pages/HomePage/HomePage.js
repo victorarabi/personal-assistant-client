@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import LoginCard from './components/LoginCard/LoginCard';
+import LoginCard from '../../components/LoginCard/LoginCard';
 import './HomePage.scss';
 
 export default function HomePage({

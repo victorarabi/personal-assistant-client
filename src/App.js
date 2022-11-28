@@ -6,7 +6,13 @@ import './App.scss';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState({
+    accessToken: null,
+    email: null,
+    id: null,
+    name: null,
+    picture: null,
+  });
 
   return (
     <Router>

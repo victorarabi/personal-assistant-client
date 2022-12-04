@@ -9,7 +9,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export default function LogoutButton() {
   return (
-    <a className="button__link" href={`${SERVER_URL}/logout`}>
+    <a className="button__link" href={`${SERVER_URL}/auth/logout`}>
       <button className="button">
         {/* <img className="button__icon" src={iconSrc} alt="icon" /> */}
         <p className="button__txt">Logout</p>

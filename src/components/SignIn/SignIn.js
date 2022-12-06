@@ -12,22 +12,17 @@ export default function SignIn() {
   //states for username and password forms
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const postUrl = SERVER_URL + '/auth/local/login';
   //Function that POST login data to the sever
   function serverLogin(username, password) {
     axios
       .post(
-        `${SERVER_URL}/auth/local/login`,
-        {
-          username: username,
-          password: password,
-        },
-        {
-          withCredentials: true,
-        }
+        postUrl,
+        { username: username, password: password },
+        { withCredentials: true }
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -52,7 +47,7 @@ export default function SignIn() {
   return (
     <div className="sign-in">
       <h3>Sign In</h3>
-      <form className="sign-in__form">
+      <div className="sign-in__form">
         <label className="sign-in__label" htmlFor="username">
           Username:
         </label>
@@ -83,10 +78,10 @@ export default function SignIn() {
           value={password}
           onChange={handlePasswordForm}
         />
-        <button className="sign-in__btn" type="submit" onSubmit={handleSubmit}>
+        <button className="sign-in__btn" onClick={handleSubmit}>
           Sign In
         </button>
-      </form>
+      </div>
     </div>
   );
 }

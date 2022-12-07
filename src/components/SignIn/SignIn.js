@@ -8,7 +8,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 /**
  * Component used to SignIn to the app using password
  */
-export default function SignIn() {
+export default function SignIn({ setIsLoading }) {
   //states for username and password forms
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -42,6 +42,7 @@ export default function SignIn() {
   //Function that handles submit
   function handleSubmit(e) {
     serverLogin(username, password);
+    setIsLoading(true);
   }
 
   return (

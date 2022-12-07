@@ -6,12 +6,15 @@ import './App.scss';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [calendarAuth, setCalendarAuth] = useState(false);
   const [profileData, setProfileData] = useState({
-    accessToken: null,
-    email: null,
     id: null,
     name: null,
+    email: null,
     picture: null,
+    calendarAuth: null,
+    tokenExpiryDate: null,
   });
 
   return (
@@ -27,6 +30,10 @@ export default function App() {
           <HomePage
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            calendarAuth={calendarAuth}
+            setCalendarAuth={setCalendarAuth}
             profileData={profileData}
             setProfileData={setProfileData}
           />

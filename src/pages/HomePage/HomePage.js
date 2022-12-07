@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import LoginCard from '../../components/LoginCard/LoginCard';
+import Loading from '../../components/Loading/Loading';
 import './HomePage.scss';
 
 //fetches server_URL from environment Variable
@@ -9,6 +10,10 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 export default function HomePage({
   isLoggedIn,
   setIsLoggedIn,
+  isLoading,
+  setIsLoading,
+  calendarAuth,
+  setCalendarAuth,
   profileData,
   setProfileData,
 }) {
@@ -19,20 +24,25 @@ export default function HomePage({
       .then((res) => {
         setProfileData(res.data);
         setIsLoggedIn(true);
+        setIsLoading(false);
       })
       .catch((err) => {
+        setIsLoggedIn(false);
+
         // If we are getting back 401 (Unauthorized) back from the server, means we need to log in
-        if (err.response.status === 401) {
-          // Update the state: done authenticating, user is not logged in
-          setIsLoggedIn(false);
+        if (err.response?.status === 401) {
+          setIsLoading(false);
+          console.log('not authorized: ' + err.response.status);
         } else {
+          setIsLoading(true);
           console.log('Error authenticating', err);
         }
       });
-  }, [setIsLoggedIn, setProfileData]);
-
-  if (!isLoggedIn) {
-    return <LoginCard />;
+  }, [setIsLoggedIn, setProfileData, isLoading, setIsLoading]);
+  if (isLoading) {
+    return <Loading />;
+  } else if (!isLoggedIn) {
+    return <LoginCard setIsLoading={setIsLoading} />;
   } else {
     return (
       <div>

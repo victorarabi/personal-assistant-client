@@ -6,7 +6,6 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 /**
  * Component Button used to logout from the app.
  */
-
 export default function LogoutButton() {
   return (
     <a className="button__link" href={`${SERVER_URL}/auth/logout`}>

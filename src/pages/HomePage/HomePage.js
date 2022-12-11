@@ -19,26 +19,30 @@ export default function HomePage({
 }) {
   // const [events, setEvents] = useState([]);
   useEffect(() => {
-    axios
-      .get(`${SERVER_URL}/profile`, { withCredentials: true })
-      .then((res) => {
-        setProfileData(res.data);
-        setIsLoggedIn(true);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setIsLoggedIn(false);
-
-        // If we are getting back 401 (Unauthorized) back from the server, means we need to log in
-        if (err.response?.status === 401) {
+    if (isLoggedIn) {
+      axios
+        .get(`${SERVER_URL}/profile`, { withCredentials: true })
+        .then((res) => {
+          setProfileData(res.data);
+          setIsLoggedIn(true);
           setIsLoading(false);
-          console.log('not authorized: ' + err.response.status);
-        } else {
-          setIsLoading(true);
-          console.log('Error authenticating', err);
-        }
-      });
-  }, [setIsLoggedIn, setProfileData, isLoading, setIsLoading]);
+        })
+        .catch((err) => {
+          setIsLoggedIn(false);
+          // If the response back from the server is 401 (Unauthorized)
+          if (err.response?.status === 401) {
+            console.log('not authorized: ' + err.response.status);
+          } else {
+            setIsLoading(true);
+            console.log('Error authenticating', err);
+          }
+        });
+    } else {
+      setIsLoading(false);
+    }
+  }, [setIsLoggedIn, setProfileData, setIsLoading, isLoggedIn]);
+
+  //check state
   if (isLoading) {
     return <Loading />;
   } else if (!isLoggedIn) {

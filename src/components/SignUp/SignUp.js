@@ -8,38 +8,46 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 /**
  * Component used to SignUp to the app, creating an user with name, username using password
  */
-export default function SignUp() {
+export default function SignUp({ setIsLoading }) {
   //states for username and password forms
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
 
   //Function that POST login data to the sever
-  function serverSignUp(name, username, password) {
+  function serverSignUp() {
     axios
       .post(
         `${SERVER_URL}/auth/local/signup`,
         {
           name: name,
+          email: email,
           username: username,
-          password: password,
+          password: password1,
         },
         {
           withCredentials: true,
         }
       )
       .then((response) => {
-        console.log(response);
+        alert('Success: ' + response.data);
+        setIsLoading(true);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        alert(err.response.data);
       });
   }
 
   //function that handles changes to the name form input
   function handleNameForm(e) {
     setName(e.target.value);
+  }
+
+  //function that handles changes to the email form input
+  function handleEmailForm(e) {
+    setEmail(e.target.value);
   }
 
   //function that handles changes to the username form input
@@ -58,14 +66,13 @@ export default function SignUp() {
   }
 
   //Function that handles submit
-  function handleSubmit(e) {
-    let password = '';
+  function handleOnClick(e) {
+    e.preventDefault();
     if (password1 === password2) {
-      password = password1;
-      serverSignUp(name, username, password);
+      serverSignUp();
     } else {
       alert(
-        'please verify password. Password and password confirmation are different'
+        'please verify password. Password and password confirmation are different.'
       );
     }
   }
@@ -73,14 +80,14 @@ export default function SignUp() {
   return (
     <div className="sign-up">
       <h3>Sign Up</h3>
-      <form className="sign-up__form">
-        <label className="sign-up__label" htmlFor="signupname">
+      <div className="sign-up__form">
+        <label className="sign-up__label" htmlFor="signupName">
           Name:
         </label>
         <input
           className="sign-up__input"
-          id="signupname"
-          name="signupname"
+          id="signupName"
+          name="signupName"
           type="text"
           required
           minLength="6"
@@ -88,6 +95,21 @@ export default function SignUp() {
           placeholder="Name"
           value={name}
           onChange={handleNameForm}
+        />
+        <label className="sign-up__label" htmlFor="signupEmail">
+          E-mail:
+        </label>
+        <input
+          className="sign-up__input"
+          id="signupEmail"
+          name="signupEmail"
+          type="text"
+          required
+          minLength="6"
+          maxLength="45"
+          placeholder="Name"
+          value={email}
+          onChange={handleEmailForm}
         />
         <label className="sign-up__label" htmlFor="signupusername">
           Username:
@@ -134,10 +156,10 @@ export default function SignUp() {
           value={password2}
           onChange={handlePassword2Form}
         />
-        <button className="sign-up__btn" type="submit" onSubmit={handleSubmit}>
+        <button className="sign-up__btn" onClick={handleOnClick}>
           Sign Up
         </button>
-      </form>
+      </div>
     </div>
   );
 }

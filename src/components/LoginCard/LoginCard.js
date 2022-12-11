@@ -16,7 +16,7 @@ export default function LoginCard({ setIsLoading }) {
         </SocialsLoginButton>
       </article>
       <article className="login-card__wrapper">
-        <SignUp />
+        <SignUp setIsLoading={setIsLoading} />
       </article>
     </section>
   );

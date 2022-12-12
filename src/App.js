@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
+import ServerOffline from './components/ServerOffline/ServerOffline';
 import './App.scss';
 import axios from 'axios';
 
@@ -42,16 +43,20 @@ export default function App() {
       />
       <Switch>
         <Route path="/">
-          <HomePage
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            calendarAuth={calendarAuth}
-            setCalendarAuth={setCalendarAuth}
-            profileData={profileData}
-            setProfileData={setProfileData}
-          />
+          {!serverError ? (
+            <HomePage
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              calendarAuth={calendarAuth}
+              setCalendarAuth={setCalendarAuth}
+              profileData={profileData}
+              setProfileData={setProfileData}
+            />
+          ) : (
+            <ServerOffline />
+          )}
         </Route>
       </Switch>
     </Router>

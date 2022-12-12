@@ -24,8 +24,8 @@ export default function HomePage({
         .get(`${SERVER_URL}/profile`, { withCredentials: true })
         .then((res) => {
           setProfileData(res.data);
-          setIsLoggedIn(true);
           setIsLoading(false);
+          setIsLoggedIn(true);
         })
         .catch((err) => {
           setIsLoggedIn(false);

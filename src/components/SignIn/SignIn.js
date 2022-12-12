@@ -22,7 +22,7 @@ export default function SignIn({ setIsLoading }) {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response.data);
+        setIsLoading(response.data);
       })
       .catch((e) => {
         console.log(e);

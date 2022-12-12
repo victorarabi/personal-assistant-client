@@ -22,17 +22,21 @@ export default function App() {
     calendarAuth: null,
     tokenExpiryDate: null,
   });
+
+  //request to the server to see if there's a user logged in
   useEffect(() => {
     axios
       .get(`${SERVER_URL}/`, { withCredentials: true })
       .then((res) => {
+        setIsLoading(false);
         setIsLoggedIn(res.data);
       })
       .catch((err) => {
         console.log(err);
         setServerError(true);
       });
-  }, []);
+  }, [isLoading]);
+
   return (
     <Router>
       <Header

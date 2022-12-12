@@ -23,7 +23,7 @@ export default function App() {
     tokenExpiryDate: null,
   });
 
-  //request to the server to see if there's a user logged in
+  //request to the server to see if there ifit pushs a user logged in
   useEffect(() => {
     axios
       .get(`${SERVER_URL}/`, { withCredentials: true })

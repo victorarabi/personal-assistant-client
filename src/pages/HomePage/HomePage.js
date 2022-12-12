@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import LoginCard from '../../components/LoginCard/LoginCard';
 import Loading from '../../components/Loading/Loading';
+import CalendarAuth from '../../components/CalendarAuth/CalendarAuth';
 import './HomePage.scss';
 
 //fetches server_URL from environment Variable
@@ -26,32 +27,44 @@ export default function HomePage({
           setProfileData(res.data);
           setIsLoading(false);
           setIsLoggedIn(true);
+          if (profileData.calendarAuth === true) {
+            setCalendarAuth(true);
+          } else {
+            setCalendarAuth(false);
+          }
         })
         .catch((err) => {
-          setIsLoggedIn(false);
-          // If the response back from the server is 401 (Unauthorized)
-          if (err.response?.status === 401) {
-            console.log('not authorized: ' + err.response.status);
-          } else {
-            setIsLoading(true);
-            console.log('Error authenticating', err);
-          }
+          console.log(err);
         });
     } else {
       setIsLoading(false);
     }
-  }, [setIsLoggedIn, setProfileData, setIsLoading, isLoggedIn]);
+  }, [
+    setIsLoggedIn,
+    setProfileData,
+    setIsLoading,
+    isLoggedIn,
+    profileData.calendarAuth,
+    setCalendarAuth,
+  ]);
 
-  //check state
+  //Return Loading Component if isLoading = true;
   if (isLoading) {
     return <Loading />;
+    //return LoginCard component if isLoading & isLoggedIn = False
   } else if (!isLoggedIn) {
     return <LoginCard setIsLoading={setIsLoading} />;
   } else {
-    return (
-      <div>
-        <h1>Hello {profileData.name}!</h1>
-      </div>
-    );
+    //check if user has already authorized Calendar to the app, if no renders Auth Button
+    if (!calendarAuth) {
+      return <CalendarAuth />;
+      //if the app has access to google Calendar, displays user data.
+    } else {
+      return (
+        <div>
+          <h1>Hello {profileData.name}!</h1>
+        </div>
+      );
+    }
   }
 }

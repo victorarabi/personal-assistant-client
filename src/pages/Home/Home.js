@@ -3,12 +3,13 @@ import axios from 'axios';
 import LoginCard from '../../components/LoginCard/LoginCard';
 import Loading from '../../components/Loading/Loading';
 import CalendarAuth from '../../components/CalendarAuth/CalendarAuth';
-import './HomePage.scss';
+import HomeMain from '../../components/HomeMain/HomeMain';
+import './Home.scss';
 
 //fetches server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-export default function HomePage({
+export default function Home({
   isLoggedIn,
   setIsLoggedIn,
   isLoading,
@@ -60,11 +61,7 @@ export default function HomePage({
       return <CalendarAuth />;
       //if the app has access to google Calendar, displays user data.
     } else {
-      return (
-        <div>
-          <h1>Hello {profileData.name}!</h1>
-        </div>
-      );
+      return <HomeMain isLoggedIn={isLoggedIn} profileData={profileData} />;
     }
   }
 }

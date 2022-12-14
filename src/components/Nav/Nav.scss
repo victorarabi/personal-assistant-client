@@ -3,10 +3,12 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/colors' as *;
 
-.header {
-  width: 100%;
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+//nav component
+.nav {
+  width: fit-content;
+  &__list {
+    gap: 0.5rem;
+    display: flex;
+    list-style: none;
+  }
 }

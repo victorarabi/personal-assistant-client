@@ -1,5 +1,6 @@
-import './Header.scss';
+import Nav from '../Nav/Nav';
 import LogoutButton from '../LogoutButton/LogoutButton';
+import './Header.scss';
 
 export default function Header({
   isLoggedIn,
@@ -10,15 +11,16 @@ export default function Header({
   //checks if there's a user logged in to the accout, if yes renders profile data and logout button
   if (isLoggedIn) {
     return (
-      <header>
-        <h1>Personal Assistant</h1>
+      <header className="header">
+        <h1 className="header__title">Personal Assistant</h1>
+        <Nav />
         <LogoutButton />
       </header>
     );
   } else {
     // if not user is logged in returns default Header
     return (
-      <header>
+      <header className="header">
         <h1>Personal Assistant</h1>
       </header>
     );

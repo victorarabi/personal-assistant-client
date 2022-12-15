@@ -10,7 +10,10 @@ export default function Nav() {
           <li className="nav__item">Home</li>
         </Link>
         <Link to="/new-event">
-          <li className="nav__item">Create a new calendar event</li>
+          <li className="nav__item">New Event</li>
+        </Link>
+        <Link to="/events">
+          <li className="nav__item">Manage Events</li>
         </Link>
         <Link to="/profile">
           <li className="nav__item">Profile</li>

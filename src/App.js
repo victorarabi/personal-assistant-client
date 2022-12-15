@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import ServerOffline from './components/ServerOffline/ServerOffline';
+import NewEvent from './pages/NewEvent/NewEvent';
+import Forbidden from './components/Forbidden/Forbidden';
 import './App.scss';
 import axios from 'axios';
 
@@ -46,7 +48,7 @@ export default function App() {
         setProfileData={setProfileData}
       />
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           {!serverError ? (
             <Home
               isLoggedIn={isLoggedIn}
@@ -61,6 +63,9 @@ export default function App() {
           ) : (
             <ServerOffline />
           )}
+        </Route>
+        <Route path="/new-event">
+          {isLoggedIn ? <NewEvent /> : <Forbidden />}
         </Route>
       </Switch>
     </Router>

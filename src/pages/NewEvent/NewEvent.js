@@ -52,10 +52,10 @@ export default function NewEvent() {
         { withCredentials: true }
       )
       .then((response) => {
-        alert(response.data);
+        console.log('success: ', response.data);
       })
       .catch((err) => {
-        alert(err?.response.data);
+        console.log('error: ', err?.response.data);
       });
   }
 
@@ -93,32 +93,38 @@ export default function NewEvent() {
 
   //handles changes to the email alert selector
   function handleEmailAlertSelector(e) {
-    setEventEmailAlert.emailReminder(e.target.value);
+    setEventEmailAlert({ ...eventEmailAlert, emailReminder: e.target.value });
   }
 
   //handles changes to the email alert time selector
   function handleEmailAlertTimeForm(e) {
-    setEventEmailAlert.reminderTime(e.target.data);
+    setEventEmailAlert({ ...eventEmailAlert, reminderTime: e.target.value });
   }
 
   //handles changes to the email alert time unit selector
   function handleEmailAlertTimeUnitForm(e) {
-    setEventEmailAlert.reminderTimeUnit(e.target.value);
+    setEventEmailAlert({
+      ...eventEmailAlert,
+      reminderTimeUnit: e.target.value,
+    });
   }
 
   //handles changes to the Pop up alert selector
   function handlePopUpAlertSelector(e) {
-    setEventPopUpAlert.popUpReminder(e.target.value);
+    setEventPopUpAlert({ ...eventPopUpAlert, popUpReminder: e.target.value });
   }
 
   //handles changes to the Pop up alert time input
   function handlePopUpAlertTimeForm(e) {
-    setEventPopUpAlert.reminderTime(e.target.value);
+    setEventPopUpAlert({ ...eventPopUpAlert, reminderTime: e.target.value });
   }
 
   //handles changes to the Pop up alert time unit selector
   function handlePopUpAlertTimeUnitForm(e) {
-    setEventPopUpAlert.reminderTimeUnit(e.target.value);
+    setEventPopUpAlert({
+      ...eventPopUpAlert,
+      reminderTimeUnit: e.target.value,
+    });
   }
 
   //handles form submission
@@ -255,7 +261,7 @@ export default function NewEvent() {
                   name="emailAlert"
                   onChange={handleEmailAlertTimeUnitForm}
                   required>
-                  <option value={'minutes'}>Seconds</option>
+                  <option value={'minutes'}>Minutes</option>
                   <option value={'hours'}>Hours</option>
                   <option value={'days'}>Days</option>
                 </select>
@@ -293,7 +299,7 @@ export default function NewEvent() {
                   name="popUpAlert"
                   onChange={handlePopUpAlertTimeUnitForm}
                   required>
-                  <option value={'minutes'}>Seconds</option>
+                  <option value={'minutes'}>Minutes</option>
                   <option value={'hours'}>Hours</option>
                   <option value={'days'}>Days</option>
                 </select>

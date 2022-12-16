@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import './SignIn.scss';
 import axios from 'axios';
+import './SignIn.scss';
 
 //fetches server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const postUrl = SERVER_URL + '/auth/local/login';
 
 /**
  * Component used to SignIn to the app using password
@@ -12,7 +13,7 @@ export default function SignIn({ setIsLoading }) {
   //states for username and password forms
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const postUrl = SERVER_URL + '/auth/local/login';
+
   //Function that POST login data to the sever
   function serverLogin(username, password) {
     axios
@@ -41,6 +42,7 @@ export default function SignIn({ setIsLoading }) {
 
   //Function that handles submit
   function handleSubmit(e) {
+    e.preventDefault();
     serverLogin(username, password);
     setIsLoading(true);
   }

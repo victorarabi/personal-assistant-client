@@ -31,7 +31,7 @@ export default function HomeMain({ isLoggedIn, profileData }) {
         console.log(err);
       });
   }, [profileData.tokenExpiryDate]);
-  console.log(eventsData);
+
   return (
     <div>
       <h1>Hello {profileData.name}!</h1>

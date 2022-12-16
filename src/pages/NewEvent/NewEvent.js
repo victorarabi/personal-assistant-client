@@ -11,18 +11,17 @@ export default function NewEvent() {
   const [eventTitle, setEventTitle] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [eventLocation, setEventLocation] = useState('');
-  //   const [eventTimezone, setEventTimezone] = useState('');
   const [eventStartDate, setEventStartDate] = useState('');
   const [eventEndDate, setEventEndDate] = useState('');
   const [eventReminder, setEventReminder] = useState('no');
   const [eventEmailAlert, setEventEmailAlert] = useState({
     emailReminder: 'no',
-    reminderTimeUnit: 'min',
+    reminderTimeUnit: 'minutes',
     reminderTime: 0,
   });
   const [eventPopUpAlert, setEventPopUpAlert] = useState({
     popUpReminder: 'no',
-    reminderTimeUnit: 'sec',
+    reminderTimeUnit: 'minutes',
     reminderTime: 0,
   });
 
@@ -41,7 +40,7 @@ export default function NewEvent() {
       .post(
         postUrl,
         {
-          title,
+          summary: title,
           description,
           location,
           startDate,
@@ -53,10 +52,10 @@ export default function NewEvent() {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response.data);
+        alert(response.data);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        alert(err?.response.data);
       });
   }
 

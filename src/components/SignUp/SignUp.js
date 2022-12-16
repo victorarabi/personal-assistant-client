@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import './SignUp.scss';
+import timezones from 'timezones-list';
 import axios from 'axios';
+import './SignUp.scss';
 
 //fetches server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -13,6 +14,7 @@ export default function SignUp({ setIsLoading }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
+  const [timezone, setTimezone] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
 
@@ -26,6 +28,7 @@ export default function SignUp({ setIsLoading }) {
           email: email,
           username: username,
           password: password1,
+          timezone: timezone,
         },
         {
           withCredentials: true,
@@ -63,6 +66,11 @@ export default function SignUp({ setIsLoading }) {
   //function that handles changes to the password form input
   function handlePassword2Form(e) {
     setPassword2(e.target.value);
+  }
+
+  //function that handles changes to the timezone form input
+  function handleTzForm(e) {
+    setTimezone(e.target.value);
   }
 
   //Function that handles submit
@@ -156,6 +164,24 @@ export default function SignUp({ setIsLoading }) {
           value={password2}
           onChange={handlePassword2Form}
         />
+        <label className="sign-up__label" htmlFor="timezone">
+          timezone:
+        </label>
+        <input
+          className="sign-up__timezone"
+          id="timezone"
+          name="timezone"
+          list="timezones"
+          placeholder="Select a timezone"
+          required
+          onChange={handleTzForm}
+        />
+        <datalist id="timezones">
+          {timezones.map((timezone, index) => {
+            const tz = timezone.tzCode;
+            return <option key={index} value={tz} />;
+          })}
+        </datalist>
         <button className="sign-up__btn" onClick={handleOnClick}>
           Sign Up
         </button>

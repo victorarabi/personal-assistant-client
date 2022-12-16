@@ -8,8 +8,6 @@ const postUrl = SERVER_URL + '/calendar/events/create';
 
 //Page that creates a new event
 export default function NewEvent() {
-  //states for new event
-
   const [eventTitle, setEventTitle] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [eventLocation, setEventLocation] = useState('');
@@ -80,11 +78,13 @@ export default function NewEvent() {
   //handles changes to the Start Date form
   function handleStartDateForm(e) {
     setEventStartDate(e.target.value);
+    console.log(eventStartDate);
   }
 
   //handles changes to the End Date form
   function handleEndDateForm(e) {
     setEventEndDate(e.target.value);
+    console.log(eventEndDate);
   }
 
   //handles changes to the reminder selector

@@ -8,13 +8,14 @@
   height: fit-content;
   border-bottom: 1px solid black;
   &__container {
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   &__column-wrapper {
-    width: 160px;
-    height: 70px;
+    width: fit-content;
+    height: 200px;
     padding: 1rem 0;
     display: flex;
     flex-direction: column;

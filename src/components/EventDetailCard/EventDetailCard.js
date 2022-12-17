@@ -1,7 +1,29 @@
 import './EventDetailCard.scss';
 
 //component that display Event Detail data
-export default function EventDetailCard({ eventData }) {
+export default function EventDetailCard({
+  eventData,
+  setEventToDelete,
+  setShowDeleteModal,
+  setEventToUpdate,
+  setShowUpdateModal,
+  blockModal,
+  setBlockModal,
+}) {
+  //handles click on update button
+  function handleUpdateOnClick(e) {
+    setEventToUpdate(eventData);
+    setShowUpdateModal('yes');
+    setShowDeleteModal('no');
+    setBlockModal('yes');
+  }
+  //handles click on delete button
+  function handleDeleteOnClick(e) {
+    setEventToDelete(eventData);
+    setShowDeleteModal('yes');
+    setShowUpdateModal('no');
+    setBlockModal('yes');
+  }
   if (!eventData) return null;
   return (
     <section className="event-card">
@@ -9,22 +31,14 @@ export default function EventDetailCard({ eventData }) {
         <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Event Title:</h4>
           <p className="event-card__txt">{eventData.summary}</p>
-        </div>
-        <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Description:</h4>
           <p className="event-card__txt">{eventData.description}</p>
-        </div>
-        <div className="event-card__column-wrapper">
-          <h4 className="event-card__label">Event location:</h4>
-          <p className="event-card__txt">{eventData.location}</p>
         </div>
         <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Event start date:</h4>
           <p className="event-card__txt">
             {eventData.start.dateTime.slice(0, 19)}
           </p>
-        </div>
-        <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Event end date:</h4>
           <p className="event-card__txt">
             {eventData.end.dateTime.slice(0, 19)}
@@ -38,8 +52,6 @@ export default function EventDetailCard({ eventData }) {
               : '0'}
             minutes
           </p>
-        </div>
-        <div className="event-card__column-wrapper">
           <h4 className="event-card__label">popup alert</h4>
           <p className="event-card__text">
             {eventData.reminders.overrides
@@ -47,6 +59,20 @@ export default function EventDetailCard({ eventData }) {
               : '0'}{' '}
             minutes
           </p>
+        </div>
+        <div className="event-card__column-wrapper">
+          <h4 className="event-card__label">Event location:</h4>
+          <p className="event-card__txt">{eventData.location}</p>
+          <button
+            disabled={blockModal === 'yes' ? true : false}
+            onClick={handleUpdateOnClick}>
+            edit
+          </button>
+          <button
+            disabled={blockModal === 'yes' ? true : false}
+            onClick={handleDeleteOnClick}>
+            delete
+          </button>
         </div>
       </div>
     </section>

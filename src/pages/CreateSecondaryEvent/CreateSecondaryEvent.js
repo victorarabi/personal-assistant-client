@@ -12,8 +12,6 @@ const postUrl = SERVER_URL + '/calendar/events/create-secondary';
 //Page that creates a new event
 export default function CreateSecondaryEvent() {
   const [showSuccessModal, setShowSuccessModal] = useState('no');
-  const [showErrorModal, setShowErrorModal] = useState('no');
-  const [errorMessage, setErrorMessage] = useState(null);
   const [urlEnd, setUrlEnd] = useState(null);
   const [newEventData, setNewEventData] = useState(null);
   const [primeEventId, setPrimeEventId] = useState(null);
@@ -34,8 +32,7 @@ export default function CreateSecondaryEvent() {
     reminderTime: 0,
   });
   //prime Event Id
-  const { id } = useParams();
-  let { instance } = useParams();
+  const { id, instance } = useParams();
   //function that POST new Event data to the server
   function newSecondaryEvent(
     title,
@@ -66,13 +63,11 @@ export default function CreateSecondaryEvent() {
       )
       .then((response) => {
         setNewEventData(response.data);
-        setShowErrorModal('no');
         setShowSuccessModal('yes');
       })
       .catch((err) => {
-        setErrorMessage(err?.response.data);
+        console.log(err?.response.data);
         setShowSuccessModal('no');
-        setShowErrorModal('yes');
       });
   }
   //handles changes to the title input
@@ -151,7 +146,8 @@ export default function CreateSecondaryEvent() {
       const nextUrl = id + '/' + 0;
       setUrlEnd(nextUrl);
     } else {
-      const nextUrl = id + '/' + (instance + 1);
+      const urlInstance = instance + 1;
+      const nextUrl = id + '/' + urlInstance;
       setUrlEnd(nextUrl);
     }
   }, [setPrimeEventId, id, instance]);

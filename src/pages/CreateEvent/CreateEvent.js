@@ -11,8 +11,6 @@ const postUrl = SERVER_URL + '/calendar/events/create';
 //Page that creates a new event
 export default function CreateEvent() {
   const [showSuccessModal, setShowSuccessModal] = useState('no');
-  const [showErrorModal, setShowErrorModal] = useState('no');
-  const [errorMessage, setErrorMessage] = useState(null);
   const [newEventData, setNewEventData] = useState(null);
   const [primeEventId, setPrimeEventId] = useState(null);
   const [eventTitle, setEventTitle] = useState('');
@@ -60,13 +58,11 @@ export default function CreateEvent() {
       .then((response) => {
         setNewEventData(response.data);
         setPrimeEventId(response.data.id);
-        setShowErrorModal('no');
         setShowSuccessModal('yes');
       })
       .catch((err) => {
-        setErrorMessage(err?.response.data);
+        console.log(err?.response.data);
         setShowSuccessModal('no');
-        setShowErrorModal('yes');
       });
   }
   //handles changes to the title input

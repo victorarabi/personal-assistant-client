@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import ServerOffline from './components/ServerOffline/ServerOffline';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 import CreateSecondaryEvent from './pages/CreateSecondaryEvent/CreateSecondaryEvent';
+import ManageEvents from './pages/ManageEvents/ManageEvents';
 import Forbidden from './components/Forbidden/Forbidden';
 import './App.scss';
 import axios from 'axios';
@@ -55,6 +56,9 @@ export default function App() {
         </Route>
         <Route path="/create-event">
           {isLoggedIn ? <CreateEvent /> : <Forbidden />}
+        </Route>
+        <Route path="/events">
+          {isLoggedIn ? <ManageEvents /> : <Forbidden />}
         </Route>
         <Route exact path="/">
           {!serverError ? (

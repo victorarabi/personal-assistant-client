@@ -1,0 +1,18 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.event-card {
+  width: 100%;
+  height: fit-content;
+  border-bottom: 1px solid black;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__column-wrapper {
+    width: 190px;
+  }
+}

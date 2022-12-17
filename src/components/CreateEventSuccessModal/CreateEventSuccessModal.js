@@ -1,9 +1,5 @@
-import { func } from 'prop-types';
 import { Link } from 'react-router-dom';
 import './CreateEventSuccessModal.scss';
-
-//client url
-const CLIENT_URL = process.env.REACT_APP_CLIENT_URL;
 
 export default function CreateEventSuccessModal({
   showSuccessModal,

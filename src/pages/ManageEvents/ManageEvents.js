@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EventDetailCard from '../../components/EventDetailCard/EventDetailCard';
 import DeleteEventModal from '../../components/DeleteEventModal/DeleteEventModal';
+import UpdateEventModal from '../../components/UpdateEventModal/UpdateEventModal';
 import './ManageEvents.scss';
 
 //fetches server_URL from environment Variable
@@ -52,6 +53,12 @@ export default function ManageEvents() {
         setShowDeleteModal={setShowDeleteModal}
         eventToDelete={eventToDelete}
         setBlockModal={setBlockModal}
+      />
+      <UpdateEventModal
+        showUpdateModal={showUpdateModal}
+        setShowUpdateModal={setShowUpdateModal}
+        setBlockModal={setBlockModal}
+        eventToUpdate={eventToUpdate}
       />
     </div>
   );

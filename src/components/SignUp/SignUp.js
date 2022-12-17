@@ -17,7 +17,6 @@ export default function SignUp({ setIsLoading }) {
   const [timezone, setTimezone] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
-
   //Function that POST login data to the sever
   function serverSignUp() {
     axios
@@ -43,37 +42,30 @@ export default function SignUp({ setIsLoading }) {
         alert(err.response);
       });
   }
-
   //function that handles changes to the name form input
   function handleNameForm(e) {
     setName(e.target.value);
   }
-
   //function that handles changes to the email form input
   function handleEmailForm(e) {
     setEmail(e.target.value);
   }
-
   //function that handles changes to the username form input
   function handleUsernameForm(e) {
     setUsername(e.target.value);
   }
-
   //function that handles changes to the password form input
   function handlePassword1Form(e) {
     setPassword1(e.target.value);
   }
-
   //function that handles changes to the password form input
   function handlePassword2Form(e) {
     setPassword2(e.target.value);
   }
-
   //function that handles changes to the timezone form input
   function handleTzForm(e) {
     setTimezone(e.target.value);
   }
-
   //Function that handles submit
   function handleOnClick(e) {
     e.preventDefault();
@@ -85,7 +77,6 @@ export default function SignUp({ setIsLoading }) {
       );
     }
   }
-
   return (
     <div className="sign-up">
       <h3>Sign Up</h3>

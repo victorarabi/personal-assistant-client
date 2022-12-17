@@ -25,7 +25,6 @@ export default function App() {
     calendarAuth: null,
     tokenExpiryDate: null,
   });
-
   //request to the server to see if there ifit pushs a user logged in
   useEffect(() => {
     axios
@@ -39,7 +38,6 @@ export default function App() {
         setServerError(true);
       });
   }, [isLoading]);
-
   return (
     <Router>
       <Header
@@ -49,6 +47,9 @@ export default function App() {
         setProfileData={setProfileData}
       />
       <Switch>
+        <Route path="/create-secondary-event:id/:instance">
+          {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
+        </Route>
         <Route path="/create-secondary-event:id">
           {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
         </Route>

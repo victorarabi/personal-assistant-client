@@ -1,11 +1,20 @@
+import { func } from 'prop-types';
 import { Link } from 'react-router-dom';
 import './CreateEventSuccessModal.scss';
+
+//client url
+const CLIENT_URL = process.env.REACT_APP_CLIENT_URL;
 
 export default function CreateEventSuccessModal({
   showSuccessModal,
   newEventData,
-  primeEventId,
+  endUrl,
 }) {
+  //handles new event request{
+  function handleOnClick(e) {
+    window.location.href = '/create-secondary-event' + endUrl;
+  }
+
   if (showSuccessModal === 'no') {
     return null;
   }
@@ -33,11 +42,11 @@ export default function CreateEventSuccessModal({
               OK
             </button>
           </Link>
-          <Link to={`/create-secondary-event${primeEventId}`}>
-            <button className="success-modal__btn success-modal__btn--secondary">
-              Create a related event?
-            </button>
-          </Link>
+          <button
+            className="success-modal__btn success-modal__btn--secondary"
+            onClick={handleOnClick}>
+            Create a related event?
+          </button>
         </div>
       </div>
     </div>

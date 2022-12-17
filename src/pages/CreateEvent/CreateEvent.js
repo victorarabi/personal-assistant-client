@@ -31,7 +31,6 @@ export default function CreateEvent() {
     reminderTimeUnit: 'minutes',
     reminderTime: 0,
   });
-
   //function that POST new Event data to the server
   function newEvent(
     title,
@@ -70,47 +69,38 @@ export default function CreateEvent() {
         setShowErrorModal('yes');
       });
   }
-
   //handles changes to the title input
   function handleTitleForm(e) {
     setEventTitle(e.target.value);
   }
-
   //handles changes to the description form
   function handleDescriptionForm(e) {
     setEventDescription(e.target.value);
   }
-
   //handles changes to the location form
   function handleLocationForm(e) {
     setEventLocation(e.target.value);
   }
-
   //handles changes to the Start Date form
   function handleStartDateForm(e) {
     setEventStartDate(e.target.value);
   }
-
   //handles changes to the End Date form
   function handleEndDateForm(e) {
     setEventEndDate(e.target.value);
   }
-
   //handles changes to the reminder selector
   function handleReminderSelector(e) {
     setEventReminder(e.target.value);
   }
-
   //handles changes to the email alert selector
   function handleEmailAlertSelector(e) {
     setEventEmailAlert({ ...eventEmailAlert, emailReminder: e.target.value });
   }
-
   //handles changes to the email alert time selector
   function handleEmailAlertTimeForm(e) {
     setEventEmailAlert({ ...eventEmailAlert, reminderTime: e.target.value });
   }
-
   //handles changes to the email alert time unit selector
   function handleEmailAlertTimeUnitForm(e) {
     setEventEmailAlert({
@@ -118,17 +108,14 @@ export default function CreateEvent() {
       reminderTimeUnit: e.target.value,
     });
   }
-
   //handles changes to the Pop up alert selector
   function handlePopUpAlertSelector(e) {
     setEventPopUpAlert({ ...eventPopUpAlert, popUpReminder: e.target.value });
   }
-
   //handles changes to the Pop up alert time input
   function handlePopUpAlertTimeForm(e) {
     setEventPopUpAlert({ ...eventPopUpAlert, reminderTime: e.target.value });
   }
-
   //handles changes to the Pop up alert time unit selector
   function handlePopUpAlertTimeUnitForm(e) {
     setEventPopUpAlert({
@@ -136,7 +123,6 @@ export default function CreateEvent() {
       reminderTimeUnit: e.target.value,
     });
   }
-
   //handles form submission
   function handleSubmit(e) {
     e.preventDefault();
@@ -151,9 +137,8 @@ export default function CreateEvent() {
       eventPopUpAlert
     );
   }
-
   return (
-    <div class="container">
+    <div className="container">
       <NewPrimeEvent
         eventTitle={eventTitle}
         handleTitleForm={handleTitleForm}
@@ -180,7 +165,7 @@ export default function CreateEvent() {
       <CreateEventSuccessModal
         showSuccessModal={showSuccessModal}
         newEventData={newEventData}
-        primeEventId={primeEventId}
+        endUrl={primeEventId}
       />
     </div>
   );

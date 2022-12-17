@@ -8,7 +8,6 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 //Main Component for Home page.
 export default function HomeMain({ isLoggedIn, profileData }) {
   const [eventsData, SetEventsData] = useState(null);
-
   //Verifies if Calendar Auth token is expired and redirects to server toep renew if
   function renewIfTokenExpired(expiryDate) {
     const today = new Date();
@@ -19,8 +18,8 @@ export default function HomeMain({ isLoggedIn, profileData }) {
     }
     return;
   }
-
   useEffect(() => {
+    //check if token is valid, if yes request calendar data, if not redirect to token request url
     renewIfTokenExpired(profileData.tokenExpiryDate);
     axios
       .get(`${SERVER_URL}/calendar/events`, { withCredentials: true })
@@ -31,7 +30,6 @@ export default function HomeMain({ isLoggedIn, profileData }) {
         console.log(err);
       });
   }, [profileData.tokenExpiryDate]);
-
   return (
     <div>
       <h1>Hello {profileData.name}!</h1>

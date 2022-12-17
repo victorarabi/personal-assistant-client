@@ -14,6 +14,7 @@ export default function CreateSecondaryEvent() {
   const [showSuccessModal, setShowSuccessModal] = useState('no');
   const [showErrorModal, setShowErrorModal] = useState('no');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [urlEnd, setUrlEnd] = useState(null);
   const [newEventData, setNewEventData] = useState(null);
   const [primeEventId, setPrimeEventId] = useState(null);
   const [eventTitle, setEventTitle] = useState('');
@@ -34,7 +35,7 @@ export default function CreateSecondaryEvent() {
   });
   //prime Event Id
   const { id } = useParams();
-
+  let { instance } = useParams();
   //function that POST new Event data to the server
   function newSecondaryEvent(
     title,
@@ -74,47 +75,38 @@ export default function CreateSecondaryEvent() {
         setShowErrorModal('yes');
       });
   }
-
   //handles changes to the title input
   function handleTitleForm(e) {
     setEventTitle(e.target.value);
   }
-
   //handles changes to the description form
   function handleDescriptionForm(e) {
     setEventDescription(e.target.value);
   }
-
   //handles changes to the location form
   function handleLocationForm(e) {
     setEventLocation(e.target.value);
   }
-
   //handles changes to the Start Date form
   function handleStartDateForm(e) {
     setEventStartDate(e.target.value);
   }
-
   //handles changes to the End Date form
   function handleEndDateForm(e) {
     setEventEndDate(e.target.value);
   }
-
   //handles changes to the reminder selector
   function handleReminderSelector(e) {
     setEventReminder(e.target.value);
   }
-
   //handles changes to the email alert selector
   function handleEmailAlertSelector(e) {
     setEventEmailAlert({ ...eventEmailAlert, emailReminder: e.target.value });
   }
-
   //handles changes to the email alert time selector
   function handleEmailAlertTimeForm(e) {
     setEventEmailAlert({ ...eventEmailAlert, reminderTime: e.target.value });
   }
-
   //handles changes to the email alert time unit selector
   function handleEmailAlertTimeUnitForm(e) {
     setEventEmailAlert({
@@ -122,17 +114,14 @@ export default function CreateSecondaryEvent() {
       reminderTimeUnit: e.target.value,
     });
   }
-
   //handles changes to the Pop up alert selector
   function handlePopUpAlertSelector(e) {
     setEventPopUpAlert({ ...eventPopUpAlert, popUpReminder: e.target.value });
   }
-
   //handles changes to the Pop up alert time input
   function handlePopUpAlertTimeForm(e) {
     setEventPopUpAlert({ ...eventPopUpAlert, reminderTime: e.target.value });
   }
-
   //handles changes to the Pop up alert time unit selector
   function handlePopUpAlertTimeUnitForm(e) {
     setEventPopUpAlert({
@@ -140,10 +129,10 @@ export default function CreateSecondaryEvent() {
       reminderTimeUnit: e.target.value,
     });
   }
-
   //handles form submission
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(primeEventId);
     newSecondaryEvent(
       eventTitle,
       eventDescription,
@@ -152,13 +141,20 @@ export default function CreateSecondaryEvent() {
       eventEndDate,
       eventReminder,
       eventEmailAlert,
-      eventPopUpAlert
+      eventPopUpAlert,
+      primeEventId
     );
   }
   useEffect(() => {
     setPrimeEventId(id);
-  }, [setPrimeEventId, id]);
-  console.log(primeEventId);
+    if (!instance) {
+      const nextUrl = id + '/' + 0;
+      setUrlEnd(nextUrl);
+    } else {
+      const nextUrl = id + '/' + (instance + 1);
+      setUrlEnd(nextUrl);
+    }
+  }, [setPrimeEventId, id, instance]);
   return (
     <div className="container">
       <NewSecondaryEvent
@@ -187,7 +183,7 @@ export default function CreateSecondaryEvent() {
       <CreateEventSuccessModal
         showSuccessModal={showSuccessModal}
         newEventData={newEventData}
-        primeEventId={primeEventId}
+        endUrl={urlEnd}
       />
     </div>
   );

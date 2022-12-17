@@ -3,7 +3,6 @@ import './SocialsLoginButton.scss';
 /**
  * Component Button used to login with social medias.
  */
-
 export default function SocialsLoginButton({ children, link }) {
   return (
     <a className="button__link" href={link}>

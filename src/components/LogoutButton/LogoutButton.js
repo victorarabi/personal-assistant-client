@@ -1,6 +1,6 @@
 import './LogoutButton.scss';
 
-//fetches server_URL from environment Variable
+//server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 /**

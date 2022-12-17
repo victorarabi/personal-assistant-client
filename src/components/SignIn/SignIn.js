@@ -13,7 +13,6 @@ export default function SignIn({ setIsLoading }) {
   //states for username and password forms
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   //Function that POST login data to the sever
   function serverLogin(username, password) {
     axios
@@ -29,24 +28,20 @@ export default function SignIn({ setIsLoading }) {
         console.log(e);
       });
   }
-
   //function that handles changes to the username form input
   function handleUsernameForm(e) {
     setUsername(e.target.value);
   }
-
   //function that handles changes to the password form input
   function handlePasswordForm(e) {
     setPassword(e.target.value);
   }
-
   //Function that handles submit
   function handleSubmit(e) {
     e.preventDefault();
     serverLogin(username, password);
     setIsLoading(true);
   }
-
   return (
     <div className="sign-in">
       <h3>Sign In</h3>

@@ -2,3 +2,8 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/colors' as *;
+
+.container {
+  width: 100%;
+  height: 100%;
+}

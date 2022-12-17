@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import NewPrimeEvent from '../../components/NewPrimeEvent/NewPrimeEvent';
+import CreateEventSuccessModal from '../../components/CreateEventSuccessModal/CreateEventSuccessModal';
 import './NewEvent.scss';
 
 //saves server_URL from environment Variable
@@ -9,6 +10,11 @@ const postUrl = SERVER_URL + '/calendar/events/create';
 
 //Page that creates a new event
 export default function NewEvent() {
+  const [showSuccessModal, setShowSuccessModal] = useState('no');
+  const [showErrorModal, setShowErrorModal] = useState('no');
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [newEventData, setNewEventData] = useState(null);
+  const [primeEventId, setPrimeEventId] = useState(null);
   const [eventTitle, setEventTitle] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [eventLocation, setEventLocation] = useState('');
@@ -53,10 +59,14 @@ export default function NewEvent() {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log('success: ', response.data);
+        setNewEventData(response.data);
+        setShowSuccessModal('yes');
+        setShowErrorModal('no');
       })
       .catch((err) => {
-        console.log('error: ', err?.response.data);
+        setErrorMessage(err?.response.data);
+        setShowSuccessModal('no');
+        setShowErrorModal('yes');
       });
   }
 
@@ -142,28 +152,35 @@ export default function NewEvent() {
   }
 
   return (
-    <NewPrimeEvent
-      eventTitle={eventTitle}
-      handleTitleForm={handleTitleForm}
-      eventDescription={eventDescription}
-      handleDescriptionForm={handleDescriptionForm}
-      eventLocation={eventLocation}
-      handleLocationForm={handleLocationForm}
-      eventStartDate={eventStartDate}
-      handleStartDateForm={handleStartDateForm}
-      eventEndDate={eventEndDate}
-      handleEndDateForm={handleEndDateForm}
-      handleReminderSelector={handleReminderSelector}
-      eventReminder={eventReminder}
-      handleEmailAlertSelector={handleEmailAlertSelector}
-      eventEmailAlert={eventEmailAlert}
-      handleEmailAlertTimeForm={handleEmailAlertTimeForm}
-      handleEmailAlertTimeUnitForm={handleEmailAlertTimeUnitForm}
-      handlePopUpAlertSelector={handlePopUpAlertSelector}
-      eventPopUpAlert={eventPopUpAlert}
-      handlePopUpAlertTimeForm={handlePopUpAlertTimeForm}
-      handlePopUpAlertTimeUnitForm={handlePopUpAlertTimeUnitForm}
-      handleSubmit={handleSubmit}
-    />
+    <div class="container">
+      <NewPrimeEvent
+        eventTitle={eventTitle}
+        handleTitleForm={handleTitleForm}
+        eventDescription={eventDescription}
+        handleDescriptionForm={handleDescriptionForm}
+        eventLocation={eventLocation}
+        handleLocationForm={handleLocationForm}
+        eventStartDate={eventStartDate}
+        handleStartDateForm={handleStartDateForm}
+        eventEndDate={eventEndDate}
+        handleEndDateForm={handleEndDateForm}
+        handleReminderSelector={handleReminderSelector}
+        eventReminder={eventReminder}
+        handleEmailAlertSelector={handleEmailAlertSelector}
+        eventEmailAlert={eventEmailAlert}
+        handleEmailAlertTimeForm={handleEmailAlertTimeForm}
+        handleEmailAlertTimeUnitForm={handleEmailAlertTimeUnitForm}
+        handlePopUpAlertSelector={handlePopUpAlertSelector}
+        eventPopUpAlert={eventPopUpAlert}
+        handlePopUpAlertTimeForm={handlePopUpAlertTimeForm}
+        handlePopUpAlertTimeUnitForm={handlePopUpAlertTimeUnitForm}
+        handleSubmit={handleSubmit}
+      />
+      <CreateEventSuccessModal
+        showSuccessModal={showSuccessModal}
+        newEventData={newEventData}
+        primeEventId={primeEventId}
+      />
+    </div>
   );
 }

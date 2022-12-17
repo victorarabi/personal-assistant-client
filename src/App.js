@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import ServerOffline from './components/ServerOffline/ServerOffline';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
+import CreateSecondaryEvent from './pages/CreateSecondaryEvent/CreateSecondaryEvent';
 import Forbidden from './components/Forbidden/Forbidden';
 import './App.scss';
 import axios from 'axios';
@@ -48,6 +49,12 @@ export default function App() {
         setProfileData={setProfileData}
       />
       <Switch>
+        <Route path="/create-secondary-event:id">
+          {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
+        </Route>
+        <Route path="/create-event">
+          {isLoggedIn ? <CreateEvent /> : <Forbidden />}
+        </Route>
         <Route exact path="/">
           {!serverError ? (
             <Home
@@ -63,9 +70,6 @@ export default function App() {
           ) : (
             <ServerOffline />
           )}
-        </Route>
-        <Route path="/create-event">
-          {isLoggedIn ? <CreateEvent /> : <Forbidden />}
         </Route>
       </Switch>
     </Router>

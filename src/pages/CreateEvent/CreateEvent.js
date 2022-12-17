@@ -60,8 +60,9 @@ export default function CreateEvent() {
       )
       .then((response) => {
         setNewEventData(response.data);
-        setShowSuccessModal('yes');
+        setPrimeEventId(response.data.id);
         setShowErrorModal('no');
+        setShowSuccessModal('yes');
       })
       .catch((err) => {
         setErrorMessage(err?.response.data);

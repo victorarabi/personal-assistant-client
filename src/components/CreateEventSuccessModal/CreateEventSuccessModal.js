@@ -33,9 +33,11 @@ export default function CreateEventSuccessModal({
               OK
             </button>
           </Link>
-          <button className="success-modal__btn success-modal__btn--secondary">
-            Create a related event?
-          </button>
+          <Link to={`/create-secondary-event${primeEventId}`}>
+            <button className="success-modal__btn success-modal__btn--secondary">
+              Create a related event?
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import ServerOffline from './components/ServerOffline/ServerOffline';
-import NewEvent from './pages/NewEvent/NewEvent';
+import CreateEvent from './pages/CreateEvent/CreateEvent';
 import Forbidden from './components/Forbidden/Forbidden';
 import './App.scss';
 import axios from 'axios';
@@ -64,8 +64,8 @@ export default function App() {
             <ServerOffline />
           )}
         </Route>
-        <Route path="/new-event">
-          {isLoggedIn ? <NewEvent /> : <Forbidden />}
+        <Route path="/create-event">
+          {isLoggedIn ? <CreateEvent /> : <Forbidden />}
         </Route>
       </Switch>
     </Router>

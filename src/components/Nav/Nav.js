@@ -9,8 +9,8 @@ export default function Nav() {
         <Link to="/">
           <li className="nav__item">Home</li>
         </Link>
-        <Link to="/new-event">
-          <li className="nav__item">New Event</li>
+        <Link to="/create-event">
+          <li className="nav__item">Create Event</li>
         </Link>
         <Link to="/events">
           <li className="nav__item">Manage Events</li>

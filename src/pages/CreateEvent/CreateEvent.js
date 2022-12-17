@@ -2,14 +2,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import NewPrimeEvent from '../../components/NewPrimeEvent/NewPrimeEvent';
 import CreateEventSuccessModal from '../../components/CreateEventSuccessModal/CreateEventSuccessModal';
-import './NewEvent.scss';
+import './CreateEvent.scss';
 
 //saves server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const postUrl = SERVER_URL + '/calendar/events/create';
 
 //Page that creates a new event
-export default function NewEvent() {
+export default function CreateEvent() {
   const [showSuccessModal, setShowSuccessModal] = useState('no');
   const [showErrorModal, setShowErrorModal] = useState('no');
   const [errorMessage, setErrorMessage] = useState(null);

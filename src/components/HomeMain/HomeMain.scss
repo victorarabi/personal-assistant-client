@@ -1,0 +1,12 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.main {
+  width: 100%;
+  &__title {
+    padding-left: 1rem;
+    @extend .title;
+  }
+}

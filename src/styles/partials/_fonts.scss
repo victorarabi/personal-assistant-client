@@ -1,12 +1,49 @@
-// Import font
-// @font-face {
-//   font-family: '';
-//   src: url('') format(''), url('') format('');
-//   font-weight: 0;
-// }
+//import font
+@font-face {
+  font-family: 'source_pro_light';
+  src: url('../../assets//fonts/SourceSerifPro-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'source_pro_regular';
+  src: url('../../assets//fonts/SourceSerifPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'source_pro_semi';
+  src: url('../../assets//fonts/SourceSerifPro-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'source_pro_bold';
+  src: url('../../assets//fonts/SourceSerifPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
 
 //Fonts for text styles
+.label {
+  font-family: 'source_pro_light';
+  font-size: 0.813rem;
+  line-height: 1.3rem;
+}
 
-//Mobile classes
+.body {
+  font-family: 'source_pro_regular';
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
 
-//Desktop & Tablets variables
+.sub-title {
+  font-family: 'source_pro_semi';
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.title {
+  font-family: 'source_pro_semi';
+  font-size: 1.5rem;
+  line-height: 2rem;
+}

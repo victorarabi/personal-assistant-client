@@ -6,9 +6,23 @@
 //nav component
 .nav {
   width: fit-content;
+  padding-left: 1rem;
   &__list {
     gap: 0.5rem;
     display: flex;
     list-style: none;
+  }
+  &__link {
+    text-decoration: none;
+    &:hover,
+    &:visited,
+    &:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  &__item {
+    @extend .body;
+    color: $lightOrange;
   }
 }

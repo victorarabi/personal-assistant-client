@@ -15,7 +15,7 @@
   }
   &__title {
     padding-bottom: 0.5rem;
-    font-size: 2rem;
+    @extend .title;
   }
   &__content-container {
     width: fit-content;
@@ -30,6 +30,7 @@
     width: 12rem;
     border-right: 1px solid gray;
     padding: 0.5rem;
+    @extend .sub-title;
     &--last {
       border: none;
     }
@@ -50,5 +51,6 @@
   &__column-item {
     width: 12rem;
     padding: 0.5rem;
+    @extend .body;
   }
 }

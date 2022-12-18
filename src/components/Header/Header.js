@@ -13,15 +13,17 @@ export default function Header({
     return (
       <header className="header">
         <h1 className="header__title">Personal Assistant</h1>
-        <Nav />
-        <LogoutButton />
+        <div className="header__container">
+          <Nav />
+          <LogoutButton />
+        </div>
       </header>
     );
   } else {
     // if not user is logged in returns default Header
     return (
       <header className="header">
-        <h1>Personal Assistant</h1>
+        <h1 className="header__title">Personal Assistant</h1>
       </header>
     );
   }

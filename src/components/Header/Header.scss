@@ -5,8 +5,18 @@
 
 .header {
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &__container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__title {
+    @extend .title;
+    color: $orange;
+  }
 }

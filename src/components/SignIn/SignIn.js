@@ -44,7 +44,7 @@ export default function SignIn({ setIsLoading }) {
   }
   return (
     <div className="sign-in">
-      <h3>Sign In</h3>
+      <h3 className="sign-in__title">Sign In</h3>
       <div className="sign-in__form">
         <label className="sign-in__label" htmlFor="username">
           Username:

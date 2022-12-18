@@ -1,0 +1,17 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.login-card {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  &__wrapper {
+    width: fit-content;
+    height: fit-content;
+    &--left {
+      border-right: 1px solid $grey;
+    }
+  }
+}

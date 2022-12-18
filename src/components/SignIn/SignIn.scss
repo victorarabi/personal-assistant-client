@@ -1,0 +1,23 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.sign-in {
+  width: 20rem;
+  padding-right: 1rem;
+  &__title {
+    padding-bottom: 1rem;
+    @extend .sub-title;
+    color: $dark;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  &__label {
+    @extend .label;
+    color: $grey;
+  }
+}

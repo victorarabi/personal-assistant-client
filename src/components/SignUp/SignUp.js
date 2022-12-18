@@ -79,7 +79,7 @@ export default function SignUp({ setIsLoading }) {
   }
   return (
     <div className="sign-up">
-      <h3>Sign Up</h3>
+      <h3 className="sign-up__title">Sign Up</h3>
       <div className="sign-up__form">
         <label className="sign-up__label" htmlFor="signupName">
           Name:

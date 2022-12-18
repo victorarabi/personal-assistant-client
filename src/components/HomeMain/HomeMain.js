@@ -36,8 +36,8 @@ export default function HomeMain({ isLoggedIn, profileData }) {
     getEvents();
   }, [profileData.tokenExpiryDate]);
   return (
-    <div>
-      <h1>Hello {profileData.name}!</h1>
+    <div className="main">
+      <h1 className="main__title">Hello {profileData.name}!</h1>
       {!eventsData ? null : <WeekAtGlanceCard eventsData={eventsData} />}
     </div>
   );

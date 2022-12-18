@@ -9,7 +9,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 export default function LoginCard({ setIsLoading }) {
   return (
     <section className="login-card">
-      <article className="login-card__wrapper">
+      <article className="login-card__wrapper login-card__wrapper--left">
         <SignIn setIsLoading={setIsLoading} />
         <SocialsLoginButton link={`${SERVER_URL}/auth/google`}>
           Sign in with Google

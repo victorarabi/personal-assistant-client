@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import WeekAtGlanceCard from '../WeekAtGlanceCard/WeekAtGlanceCard';
 import './HomeMain.scss';
 
 //fetches server_URL from environment Variable
@@ -18,10 +19,9 @@ export default function HomeMain({ isLoggedIn, profileData }) {
     }
     return;
   }
-  useEffect(() => {
-    //check if token is valid, if yes request calendar data, if not redirect to token request url
-    renewIfTokenExpired(profileData.tokenExpiryDate);
-    axios
+  //function to get events from backend
+  async function getEvents() {
+    await axios
       .get(`${SERVER_URL}/calendar/events`, { withCredentials: true })
       .then(async (res) => {
         setEventsData(await res.data);
@@ -29,10 +29,16 @@ export default function HomeMain({ isLoggedIn, profileData }) {
       .catch((err) => {
         console.log(err);
       });
+  }
+  useEffect(() => {
+    //check if token is valid, if yes request calendar data, if not redirect to token request url
+    renewIfTokenExpired(profileData.tokenExpiryDate);
+    getEvents();
   }, [profileData.tokenExpiryDate]);
   return (
     <div>
       <h1>Hello {profileData.name}!</h1>
+      {!eventsData ? null : <WeekAtGlanceCard eventsData={eventsData} />}
     </div>
   );
 }

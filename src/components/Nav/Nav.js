@@ -18,9 +18,6 @@ export default function Nav() {
         <Link to="/profile">
           <li className="nav__item">Profile</li>
         </Link>
-        <Link to="/settings">
-          <li className="nav__item">Settings</li>
-        </Link>
       </ul>
     </nav>
   );

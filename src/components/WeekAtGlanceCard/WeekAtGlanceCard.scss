@@ -1,0 +1,54 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.week {
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem;
+  border: 0.01rem solid silver;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  &__header {
+    width: 100%;
+  }
+  &__title {
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  &__content-container {
+    width: fit-content;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+  }
+  &__table-list {
+    display: flex;
+    list-style: none;
+  }
+  &__table-item {
+    width: 12rem;
+    border-right: 1px solid gray;
+    padding: 0.5rem;
+    &--last {
+      border: none;
+    }
+  }
+  &__table-content {
+    display: flex;
+  }
+  &__table-column {
+    width: 12rem;
+    height: 14rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid gray;
+    &--last {
+      border: none;
+    }
+  }
+  &__column-item {
+    width: 12rem;
+    padding: 0.5rem;
+  }
+}

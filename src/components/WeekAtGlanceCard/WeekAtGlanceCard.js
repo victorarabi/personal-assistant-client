@@ -4,6 +4,8 @@ import './WeekAtGlanceCard.scss';
 
 //component that renders the week at glance table
 export default function WeekAtGlanceCard(eventsData) {
+  const [showEventModal, setShowEventModal] = useState(false);
+  const [eventToDisplay, setEventToDisplay] = useState(null);
   const [dailyEvents, setDailyEvents] = useState({
     sunday: [],
     monday: [],
@@ -13,6 +15,15 @@ export default function WeekAtGlanceCard(eventsData) {
     friday: [],
     saturday: [],
   });
+  const weekDays = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
   useEffect(() => {
     //defines today date for comparison
     const today = DateTime.now();
@@ -72,6 +83,140 @@ export default function WeekAtGlanceCard(eventsData) {
       saturday: saturday,
     });
   }, [eventsData]);
-  console.log(dailyEvents);
-  return <div>I am an event</div>;
+  return (
+    <article className="week">
+      <section className="week__header">
+        <h1 className="week__title">Your week at a glance</h1>
+      </section>
+      <section className="week__content-container">
+        <div className="week__table-header">
+          <ul className="week__table-list">
+            {weekDays.map((day) => {
+              if (day.toLowerCase() === 'saturday') {
+                return (
+                  <li
+                    key={day}
+                    className="week__table-item week__table-item--last">
+                    {day}
+                  </li>
+                );
+              }
+              return (
+                <li key={day} className="week__table-item">
+                  {day}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="week__table-content">
+          <div className="week__table-column">
+            {dailyEvents.sunday.map((event, i) => {
+              return (
+                <p
+                  key={'sunday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column">
+            {dailyEvents.monday.map((event, i) => {
+              return (
+                <p
+                  key={'monday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column">
+            {dailyEvents.tuesday.map((event, i) => {
+              return (
+                <p
+                  key={'tuesday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column">
+            {dailyEvents.wednesday.map((event, i) => {
+              return (
+                <p
+                  key={'wednesday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column">
+            {dailyEvents.thursday.map((event, i) => {
+              return (
+                <p
+                  key={'thursday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column">
+            {dailyEvents.friday.map((event, i) => {
+              return (
+                <p
+                  key={'friday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column week__table-column--last">
+            {dailyEvents.saturday.map((event, i) => {
+              return (
+                <p
+                  key={'saturday' + i}
+                  className="week__column-item"
+                  onClick={(e) => {
+                    setEventToDisplay(event);
+                    setShowEventModal(true);
+                  }}>
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </article>
+  );
 }

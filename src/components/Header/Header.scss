@@ -9,6 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &__logo-container {
+    width: 4rem;
+    background-color: $white;
+    border-radius: 50%;
+  }
+  &__logo {
+    width: 4.5rem;
+    margin-right: 0.5rem;
+    background-position: center;
+    background-size: cover;
+  }
   &__container {
     flex-grow: 1;
     display: flex;

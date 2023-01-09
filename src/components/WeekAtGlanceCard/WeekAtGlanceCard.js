@@ -5,22 +5,22 @@ import './WeekAtGlanceCard.scss';
 //component that renders the week at glance table
 export default function WeekAtGlanceCard(eventsData) {
   const [dailyEvents, setDailyEvents] = useState({
-    sunday: [],
     monday: [],
     tuesday: [],
     wednesday: [],
     thursday: [],
     friday: [],
     saturday: [],
+    sunday: [],
   });
   const weekDays = [
-    'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
     'Saturday',
+    'Sunday',
   ];
   useEffect(() => {
     //defines today date for comparison
@@ -43,11 +43,9 @@ export default function WeekAtGlanceCard(eventsData) {
     let friday = [];
     let saturday = [];
     weekEvents.forEach((event) => {
+      console.log(event);
       const dt = DateTime.fromISO(event.start.dateTime);
       switch (dt.weekday) {
-        case 0:
-          sunday.push(event);
-          break;
         case 1:
           monday.push(event);
           break;
@@ -66,19 +64,22 @@ export default function WeekAtGlanceCard(eventsData) {
         case 6:
           saturday.push(event);
           break;
+        case 7:
+          sunday.push(event);
+          break;
         default:
           return null;
       }
     });
     //set daily events with each week event array
     setDailyEvents({
-      sunday: sunday,
       monday: monday,
       tuesday: tuesday,
       wednesday: wednesday,
       thursday: thursday,
       friday: friday,
       saturday: saturday,
+      sunday: sunday,
     });
   }, [eventsData]);
   return (
@@ -90,11 +91,12 @@ export default function WeekAtGlanceCard(eventsData) {
         <div className="week__table-header">
           <ul className="week__table-list">
             {weekDays.map((day) => {
-              if (day.toLowerCase() === 'saturday') {
+              if (day.toLowerCase() === 'sunday') {
                 return (
                   <li
                     key={day}
-                    className="week__table-item week__table-item--last">
+                    className="week__table-item week__table-item--last"
+                  >
                     {day}
                   </li>
                 );
@@ -108,15 +110,6 @@ export default function WeekAtGlanceCard(eventsData) {
           </ul>
         </div>
         <div className="week__table-content">
-          <div className="week__table-column">
-            {dailyEvents.sunday.map((event, i) => {
-              return (
-                <p key={'sunday' + i} className="week__column-item">
-                  {event.summary}
-                </p>
-              );
-            })}
-          </div>
           <div className="week__table-column">
             {dailyEvents.monday.map((event, i) => {
               return (
@@ -162,10 +155,19 @@ export default function WeekAtGlanceCard(eventsData) {
               );
             })}
           </div>
-          <div className="week__table-column week__table-column--last">
+          <div className="week__table-column ">
             {dailyEvents.saturday.map((event, i) => {
               return (
                 <p key={'saturday' + i} className="week__column-item">
+                  {event.summary}
+                </p>
+              );
+            })}
+          </div>
+          <div className="week__table-column week__table-column--last">
+            {dailyEvents.sunday.map((event, i) => {
+              return (
+                <p key={'sunday' + i} className="week__column-item">
                   {event.summary}
                 </p>
               );

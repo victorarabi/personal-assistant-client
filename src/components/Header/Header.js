@@ -1,5 +1,6 @@
 import Nav from '../Nav/Nav';
 import LogoutButton from '../LogoutButton/LogoutButton';
+import logo from '../../assets/images/logo.png';
 import './Header.scss';
 
 export default function Header({
@@ -12,7 +13,10 @@ export default function Header({
   if (isLoggedIn) {
     return (
       <header className="header">
-        <h1 className="header__title">Personal Assistant</h1>
+        <img className="header__logo" src={logo} alt="logo" />
+        <h1 className="header__title">
+          <span className="header__title">P</span>ersonal Assistant
+        </h1>
         <div className="header__container">
           <Nav />
           <LogoutButton />
@@ -23,6 +27,7 @@ export default function Header({
     // if not user is logged in returns default Header
     return (
       <header className="header">
+        <img className="header__logo" src={logo} alt="logo" />
         <h1 className="header__title">Personal Assistant</h1>
       </header>
     );

@@ -1,3 +1,4 @@
+import TimezoneForm from '../TimezoneForm/TimezoneForm';
 import './ProfileModal.scss';
 
 export default function ProfileModal({
@@ -15,7 +16,6 @@ export default function ProfileModal({
   if (showModal === 'no') {
     return null;
   }
-  //handle delete submit
   return (
     <div className="overlay" onClick={handleOverlayOnClick}>
       <div
@@ -24,7 +24,16 @@ export default function ProfileModal({
           e.stopPropagation();
         }}
       >
-        teste
+        {modalType === 'password' ? (
+          <div>password</div>
+        ) : modalType === 'timezone' ? (
+          <TimezoneForm
+            setShowModal={setShowModal}
+            setModalType={setModalType}
+          />
+        ) : modalType === 'revoke' ? (
+          <div>revoke</div>
+        ) : null}
       </div>
     </div>
   );

@@ -1,0 +1,26 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.profile {
+  width: 100%;
+  padding-left: 1rem;
+  &__container {
+    display: flex;
+    padding-bottom: 0.5rem;
+    &--revoke {
+      width: fit-content;
+      flex-direction: column;
+      flex-grow: 0;
+    }
+  }
+  &__label {
+    padding-right: 0.5rem;
+    @extend .label;
+  }
+  &__text {
+    padding-right: 0.5rem;
+    @extend .body;
+  }
+}

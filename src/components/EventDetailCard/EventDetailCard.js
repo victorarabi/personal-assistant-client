@@ -56,7 +56,7 @@ export default function EventDetailCard({
           <p className="event-card__text">
             {eventData.reminders.overrides
               ? eventData.reminders.overrides[1].minutes
-              : '0'}{' '}
+              : '0'}
             minutes
           </p>
         </div>
@@ -65,12 +65,14 @@ export default function EventDetailCard({
           <p className="event-card__txt">{eventData.location}</p>
           <button
             disabled={blockModal === 'yes' ? true : false}
-            onClick={handleUpdateOnClick}>
+            onClick={handleUpdateOnClick}
+          >
             edit
           </button>
           <button
             disabled={blockModal === 'yes' ? true : false}
-            onClick={handleDeleteOnClick}>
+            onClick={handleDeleteOnClick}
+          >
             delete
           </button>
         </div>

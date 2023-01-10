@@ -6,9 +6,10 @@ import ServerOffline from './components/ServerOffline/ServerOffline';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 import CreateSecondaryEvent from './pages/CreateSecondaryEvent/CreateSecondaryEvent';
 import ManageEvents from './pages/ManageEvents/ManageEvents';
+import Profile from './pages/Profile/Profile';
 import Forbidden from './components/Forbidden/Forbidden';
-import './App.scss';
 import axios from 'axios';
+import './App.scss';
 
 //fetches server_URL from environment Variable
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -25,6 +26,7 @@ export default function App() {
     picture: null,
     calendarAuth: null,
     tokenExpiryDate: null,
+    timezone: null,
   });
   //request to the server to see if there ifit pushs a user logged in
   useEffect(() => {
@@ -59,6 +61,9 @@ export default function App() {
         </Route>
         <Route path="/events">
           {isLoggedIn ? <ManageEvents /> : <Forbidden />}
+        </Route>
+        <Route path="/profile">
+          {isLoggedIn ? <Profile profileData={profileData} /> : <Forbidden />}
         </Route>
         <Route exact path="/">
           {!serverError ? (

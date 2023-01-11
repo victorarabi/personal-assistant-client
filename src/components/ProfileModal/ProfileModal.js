@@ -1,5 +1,6 @@
 import TimezoneForm from '../TimezoneForm/TimezoneForm';
 import PasswordChangeForm from '../PasswordChangeForm/PasswordChangeForm';
+import Revoke from '../Revoke/Revoke';
 import './ProfileModal.scss';
 
 export default function ProfileModal({
@@ -36,7 +37,7 @@ export default function ProfileModal({
             setModalType={setModalType}
           />
         ) : modalType === 'revoke' ? (
-          <div>revoke</div>
+          <Revoke setShowModal={setShowModal} setModalType={setModalType} />
         ) : null}
       </div>
     </div>

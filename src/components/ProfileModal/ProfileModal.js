@@ -1,4 +1,5 @@
 import TimezoneForm from '../TimezoneForm/TimezoneForm';
+import PasswordChangeForm from '../PasswordChangeForm/PasswordChangeForm';
 import './ProfileModal.scss';
 
 export default function ProfileModal({
@@ -25,7 +26,10 @@ export default function ProfileModal({
         }}
       >
         {modalType === 'password' ? (
-          <div>password</div>
+          <PasswordChangeForm
+            setShowModal={setShowModal}
+            setModalType={setModalType}
+          />
         ) : modalType === 'timezone' ? (
           <TimezoneForm
             setShowModal={setShowModal}

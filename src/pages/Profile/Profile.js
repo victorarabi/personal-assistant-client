@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProfileModal from '../../components/ProfileModal/ProfileModal';
 import './Profile.scss';
 
-export default function Profile({ profileData }) {
+//fetches server_URL from environment Variable
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+export default function Profile() {
   const [showModal, setShowModal] = useState('no');
   const [modalType, setModalType] = useState(null);
+  const [profileData, setProfileData] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${SERVER_URL}/profile`, { withCredentials: true })
+      .then((res) => {
+        setProfileData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [profileData]);
   //handles password change
   function handlePasswordOnClick(e) {
     e.preventDefault();
@@ -22,6 +37,13 @@ export default function Profile({ profileData }) {
     e.preventDefault();
     setModalType('revoke');
     setShowModal('yes');
+  }
+  if (!profileData) {
+    return (
+      <section className="profile">
+        <h1 className="profile__loading">Loading...</h1>
+      </section>
+    );
   }
   return (
     <section className="profile">

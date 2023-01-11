@@ -51,10 +51,10 @@ export default function TimezoneForm({ setShowModal, setModalType }) {
     setModalType(null);
   }
   return (
-    <div>
-      <h1 className="tz-form__time">Change Timezone</h1>
+    <div className="tz-form">
+      <h1 className="tz-form__title">Change Timezone</h1>
       <label className="tz-form__label" htmlFor="timezone">
-        Please select the new timezone:
+        Please select or write the new timezone:
       </label>
       <input
         className="tz-form__timezone"

@@ -43,7 +43,6 @@ export default function WeekAtGlanceCard(eventsData) {
     let friday = [];
     let saturday = [];
     weekEvents.forEach((event) => {
-      console.log(event);
       const dt = DateTime.fromISO(event.start.dateTime);
       switch (dt.weekday) {
         case 1:

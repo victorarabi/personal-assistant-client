@@ -19,6 +19,10 @@ export default function SignUp({ setIsLoading }) {
   const [password2, setPassword2] = useState('');
   //Function that POST login data to the sever
   function serverSignUp() {
+    if (!name || !email || !username || !timezone || !password1) {
+      alert("please don't verify all the input fields");
+      return;
+    }
     axios
       .post(
         `${SERVER_URL}/auth/local/signup`,
@@ -135,8 +139,8 @@ export default function SignUp({ setIsLoading }) {
           name="password1"
           type="password"
           required
-          minLength="6"
-          maxLength="36"
+          minLength="8"
+          maxLength="40"
           placeholder="Password"
           value={password1}
           onChange={handlePassword1Form}
@@ -150,8 +154,8 @@ export default function SignUp({ setIsLoading }) {
           name="password2"
           type="password"
           required
-          minLength="6"
-          maxLength="36"
+          minLength="8"
+          maxLength="40"
           placeholder="Password"
           value={password2}
           onChange={handlePassword2Form}

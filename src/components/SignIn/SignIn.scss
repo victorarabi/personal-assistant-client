@@ -9,7 +9,7 @@
   &__title {
     padding-bottom: 1rem;
     @extend .sub-title;
-    color: $dark;
+    color: $background-blue;
   }
   &__form {
     display: flex;
@@ -17,7 +17,22 @@
     padding-bottom: 1rem;
   }
   &__label {
+    padding-bottom: 0.25rem;
     @extend .label;
     color: $grey;
+  }
+  &__input {
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+    @extend .body;
+    color: $darkPurple;
+  }
+  &__btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: $lightOrange;
+    @extend .body;
+    color: $white;
   }
 }

@@ -5,13 +5,14 @@
 
 .login-card {
   width: 100%;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
   display: flex;
+  justify-content: center;
   &__wrapper {
     width: fit-content;
     height: fit-content;
     &--left {
-      border-right: 1px solid $grey;
+      border-right: 1px solid $mercury;
     }
   }
 }

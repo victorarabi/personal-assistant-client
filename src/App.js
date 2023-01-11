@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import ServerOffline from './components/ServerOffline/ServerOffline';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
@@ -42,46 +43,55 @@ export default function App() {
       });
   }, [isLoading]);
   return (
-    <Router>
-      <Header
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        profileData={profileData}
-        setProfileData={setProfileData}
-      />
-      <Switch>
-        <Route path="/create-secondary-event:id/:instance">
-          {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
-        </Route>
-        <Route path="/create-secondary-event:id">
-          {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
-        </Route>
-        <Route path="/create-event">
-          {isLoggedIn ? <CreateEvent /> : <Forbidden />}
-        </Route>
-        <Route path="/events">
-          {isLoggedIn ? <ManageEvents /> : <Forbidden />}
-        </Route>
-        <Route path="/profile">
-          {isLoggedIn ? <Profile profileData={profileData} /> : <Forbidden />}
-        </Route>
-        <Route exact path="/">
-          {!serverError ? (
-            <Home
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              calendarAuth={calendarAuth}
-              setCalendarAuth={setCalendarAuth}
-              profileData={profileData}
-              setProfileData={setProfileData}
-            />
-          ) : (
-            <ServerOffline />
-          )}
-        </Route>
-      </Switch>
-    </Router>
+    <div className="app">
+      <Router>
+        <div className="app__container">
+          <Header
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            profileData={profileData}
+            setProfileData={setProfileData}
+          />
+          <Switch>
+            <Route path="/create-secondary-event:id/:instance">
+              {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
+            </Route>
+            <Route path="/create-secondary-event:id">
+              {isLoggedIn ? <CreateSecondaryEvent /> : <Forbidden />}
+            </Route>
+            <Route path="/create-event">
+              {isLoggedIn ? <CreateEvent /> : <Forbidden />}
+            </Route>
+            <Route path="/events">
+              {isLoggedIn ? <ManageEvents /> : <Forbidden />}
+            </Route>
+            <Route path="/profile">
+              {isLoggedIn ? (
+                <Profile profileData={profileData} />
+              ) : (
+                <Forbidden />
+              )}
+            </Route>
+            <Route exact path="/">
+              {!serverError ? (
+                <Home
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                  calendarAuth={calendarAuth}
+                  setCalendarAuth={setCalendarAuth}
+                  profileData={profileData}
+                  setProfileData={setProfileData}
+                />
+              ) : (
+                <ServerOffline />
+              )}
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
+    </div>
   );
 }

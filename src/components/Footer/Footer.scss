@@ -1,0 +1,30 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.footer {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid $mercury;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+  &__copyright {
+    @extend .label;
+    color: $orange;
+  }
+  &__link {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+  }
+  &__logo {
+    width: 1rem;
+  }
+}

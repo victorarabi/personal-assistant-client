@@ -1,0 +1,13 @@
+@use './styles/partials/global' as *;
+@use './styles/partials/mixins' as *;
+@use './styles/partials/fonts' as *;
+@use './styles/partials/colors' as *;
+
+.app {
+  max-width: 87rem;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -161,10 +161,10 @@ export default function SignUp({ setIsLoading }) {
           onChange={handlePassword2Form}
         />
         <label className="sign-up__label" htmlFor="timezone">
-          timezone:
+          Timezone:
         </label>
         <input
-          className="sign-up__timezone"
+          className="sign-up__input"
           id="timezone"
           name="timezone"
           list="timezones"

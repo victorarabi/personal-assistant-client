@@ -1,0 +1,17 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.button {
+  width: fit-content;
+  border: none;
+  background-color: $white;
+  &__icon {
+    width: 3rem;
+  }
+  &__txt {
+    @extend .body;
+    color: $darkPurple;
+  }
+}

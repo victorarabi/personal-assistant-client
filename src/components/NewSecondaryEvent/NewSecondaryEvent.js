@@ -77,7 +77,7 @@ export default function NewSecondaryEvent({
           Start Date:
         </label>
         <input
-          className="new-event__date"
+          className="new-event__input"
           id="startDate"
           name="startDate"
           type="datetime-local"
@@ -89,7 +89,7 @@ export default function NewSecondaryEvent({
           End Date:
         </label>
         <input
-          className="new-event__date"
+          className="new-event__input"
           id="endDate"
           name="endDate"
           type="datetime-local"
@@ -101,11 +101,12 @@ export default function NewSecondaryEvent({
           Add reminder?
         </label>
         <select
-          className="new-event__reminder new-event__reminder--selector"
+          className="new-event__input new-event__input--selector"
           id="reminder"
           name="reminder"
           required
-          onChange={handleReminderSelector}>
+          onChange={handleReminderSelector}
+        >
           <option value={'no'}>No</option>
           <option value={'yes'}>Yes</option>
         </select>
@@ -117,16 +118,17 @@ export default function NewSecondaryEvent({
               </label>
               <div className="new-event__email-options">
                 <select
-                  className="new-event__email-alert"
+                  className="new-event__input new-event__input--selector"
                   id="emailAlert"
                   name="emailAlert"
                   onChange={handleEmailAlertSelector}
-                  required>
+                  required
+                >
                   <option value={'no'}>No</option>
                   <option value={'yes'}>Yes</option>
                 </select>
                 <input
-                  className="new-event__input new-event__input--reminder-time"
+                  className="new-event__input new-event__input--time"
                   id="emailAlertReminderTime"
                   name="emailAlertReminderTime"
                   type="number"
@@ -138,11 +140,12 @@ export default function NewSecondaryEvent({
                   onChange={handleEmailAlertTimeForm}
                 />
                 <select
-                  className="new-event__time-units"
+                  className="new-event__input new-event__input--units"
                   id="emailAlertTime"
                   name="emailAlert"
                   onChange={handleEmailAlertTimeUnitForm}
-                  required>
+                  required
+                >
                   <option value={'minutes'}>Minutes</option>
                   <option value={'hours'}>Hours</option>
                   <option value={'days'}>Days</option>
@@ -153,18 +156,19 @@ export default function NewSecondaryEvent({
               <label className="new-event__label" htmlFor="popUpAlert">
                 Pop Up:
               </label>
-              <div className="new-event__popup-options">
+              <div className="new-event__options">
                 <select
-                  className="new-event__pop-up-alert"
+                  className="new-event__input new-event__input--selector"
                   id="popUpAlert"
                   name="popUpAlert"
                   onChange={handlePopUpAlertSelector}
-                  required>
+                  required
+                >
                   <option value={'no'}>No</option>
                   <option value={'yes'}>Yes</option>
                 </select>
                 <input
-                  className="new-event__input new-event__input--reminder-time"
+                  className="new-event__input new-event__input--time"
                   id="popUpAlertReminderTime"
                   name="popUpAlertReminderTime"
                   type="number"
@@ -176,11 +180,12 @@ export default function NewSecondaryEvent({
                   onChange={handlePopUpAlertTimeForm}
                 />
                 <select
-                  className="new-event__time-units"
+                  className="new-event__input new-event__input--units"
                   id="popUpAlertTime"
                   name="popUpAlert"
                   onChange={handlePopUpAlertTimeUnitForm}
-                  required>
+                  required
+                >
                   <option value={'minutes'}>Minutes</option>
                   <option value={'hours'}>Hours</option>
                   <option value={'days'}>Days</option>

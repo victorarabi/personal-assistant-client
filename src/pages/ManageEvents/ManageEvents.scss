@@ -5,7 +5,13 @@
 
 .manage-events {
   width: 100%;
+  padding: 2rem 1.5rem 1rem;
   &__container {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $mercury;
+  }
+  &__title {
+    padding-bottom: 1rem;
+    @extend .title;
+    color: $background-blue;
   }
 }

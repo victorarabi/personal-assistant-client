@@ -47,6 +47,7 @@ export default function Profile() {
   }
   return (
     <section className="profile">
+      <h1 className="profile__title">User profile</h1>
       <div className="profile__container">
         <h3 className="profile__label">Name:</h3>
         <p className="profile__text">{profileData.name}</p>
@@ -71,7 +72,10 @@ export default function Profile() {
       </div>
       <div className="profile__container profile__container--revoke">
         <h3 className="profile__label">Revoke access to google calendar</h3>
-        <button className="profile__btn" onClick={handleRevokeOnClick}>
+        <button
+          className="profile__btn profile__btn--revoke"
+          onClick={handleRevokeOnClick}
+        >
           Revoke
         </button>
       </div>

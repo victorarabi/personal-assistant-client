@@ -46,14 +46,14 @@ export default function EventDetailCard({
         </div>
         <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Email alert</h4>
-          <p className="event-card__text">
+          <p className="event-card__txt">
             {eventData.reminders.overrides
               ? eventData.reminders.overrides[0].minutes
               : '0'}
             minutes
           </p>
           <h4 className="event-card__label">popup alert</h4>
-          <p className="event-card__text">
+          <p className="event-card__txt">
             {eventData.reminders.overrides
               ? eventData.reminders.overrides[1].minutes
               : '0'}
@@ -63,18 +63,22 @@ export default function EventDetailCard({
         <div className="event-card__column-wrapper">
           <h4 className="event-card__label">Event location:</h4>
           <p className="event-card__txt">{eventData.location}</p>
-          <button
-            disabled={blockModal === 'yes' ? true : false}
-            onClick={handleUpdateOnClick}
-          >
-            edit
-          </button>
-          <button
-            disabled={blockModal === 'yes' ? true : false}
-            onClick={handleDeleteOnClick}
-          >
-            delete
-          </button>
+          <div className="event-card__btn-container">
+            <button
+              className="event-card__btn"
+              disabled={blockModal === 'yes' ? true : false}
+              onClick={handleUpdateOnClick}
+            >
+              edit
+            </button>
+            <button
+              className="event-card__btn"
+              disabled={blockModal === 'yes' ? true : false}
+              onClick={handleDeleteOnClick}
+            >
+              delete
+            </button>
+          </div>
         </div>
       </div>
     </section>

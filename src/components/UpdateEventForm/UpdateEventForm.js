@@ -32,7 +32,8 @@ export default function UpdateEventForm({
         className="update-modal"
         onClick={(e) => {
           e.stopPropagation();
-        }}>
+        }}
+      >
         <h3 className="update-modal__title">Update event</h3>
         <div className="update-modal__form">
           <label className="update-modal__label" htmlFor="title">
@@ -84,7 +85,7 @@ export default function UpdateEventForm({
             Start Date:
           </label>
           <input
-            className="update-modal__date"
+            className="update-modal__input"
             id="startDate"
             name="startDate"
             type="datetime-local"
@@ -96,7 +97,7 @@ export default function UpdateEventForm({
             End Date:
           </label>
           <input
-            className="update-modal__date"
+            className="update-modal__input"
             id="endDate"
             name="endDate"
             type="datetime-local"
@@ -108,12 +109,13 @@ export default function UpdateEventForm({
             Add reminder?
           </label>
           <select
-            className="update-modal__reminder update-modal__reminder--selector"
+            className="update-modal__input update-modal__input--selector"
             id="reminder"
             name="reminder"
             required
             onChange={handleReminderSelector}
-            value={eventReminder}>
+            value={eventReminder}
+          >
             <option value={'no'}>No</option>
             <option value={'yes'}>Yes</option>
           </select>
@@ -123,19 +125,20 @@ export default function UpdateEventForm({
                 <label className="update-modal__label" htmlFor="emailAlert">
                   E-mail:
                 </label>
-                <div className="update-modal__email-options">
+                <div className="update-modal__options">
                   <select
-                    className="update-modal__email-alert"
+                    className="update-modal__input update-modal__input--selector"
                     id="emailAlert"
                     name="emailAlert"
                     onChange={handleEmailAlertSelector}
                     value={eventEmailAlert.emailReminder}
-                    required>
+                    required
+                  >
                     <option value={'no'}>No</option>
                     <option value={'yes'}>Yes</option>
                   </select>
                   <input
-                    className="update-modal__input update-modal__input--reminder-time"
+                    className="update-modal__input update-modal__input--time"
                     id="emailAlertReminderTime"
                     name="emailAlertReminderTime"
                     type="number"
@@ -147,12 +150,13 @@ export default function UpdateEventForm({
                     onChange={handleEmailAlertTimeForm}
                   />
                   <select
-                    className="update-modal__time-units"
+                    className="update-modal__input update-modal__input--units"
                     id="emailAlertTime"
                     name="emailAlert"
                     onChange={handleEmailAlertTimeUnitForm}
                     value={eventEmailAlert.reminderTimeUnit}
-                    required>
+                    required
+                  >
                     <option value={'minutes'}>Minutes</option>
                     <option value={'hours'}>Hours</option>
                     <option value={'days'}>Days</option>
@@ -163,19 +167,20 @@ export default function UpdateEventForm({
                 <label className="update-modal__label" htmlFor="popUpAlert">
                   Pop Up:
                 </label>
-                <div className="update-modal__popup-options">
+                <div className="update-modal__options">
                   <select
-                    className="update-modal__pop-up-alert"
+                    className="update-modal__input update-modal__input--selector"
                     id="popUpAlert"
                     name="popUpAlert"
                     onChange={handlePopUpAlertSelector}
                     value={eventPopUpAlert.popUpReminder}
-                    required>
+                    required
+                  >
                     <option value={'no'}>No</option>
                     <option value={'yes'}>Yes</option>
                   </select>
                   <input
-                    className="update-modal__input update-modal__input--reminder-time"
+                    className="update-modal__input update-modal__input--time"
                     id="popUpAlertReminderTime"
                     name="popUpAlertReminderTime"
                     type="number"
@@ -187,12 +192,13 @@ export default function UpdateEventForm({
                     onChange={handlePopUpAlertTimeForm}
                   />
                   <select
-                    className="update-modal__time-units"
+                    className="update-modal__input update-modal__input--units"
                     id="popUpAlertTime"
                     name="popUpAlert"
                     onChange={handlePopUpAlertTimeUnitForm}
                     value={eventPopUpAlert.reminderTimeUnit}
-                    required>
+                    required
+                  >
                     <option value={'minutes'}>Minutes</option>
                     <option value={'hours'}>Hours</option>
                     <option value={'days'}>Days</option>
@@ -202,12 +208,14 @@ export default function UpdateEventForm({
             </div>
           ) : null}
         </div>
-        <button className="update-modal__btn" onClick={handleSubmit}>
-          Update event
-        </button>
-        <button className="delete-modal__button" onClick={handleCancelOnClick}>
-          Cancel
-        </button>
+        <div className="update-modal__nav-container">
+          <button className="update-modal__btn" onClick={handleSubmit}>
+            Update event
+          </button>
+          <button className="delete-modal__btn" onClick={handleCancelOnClick}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

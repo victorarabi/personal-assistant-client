@@ -61,7 +61,7 @@ export default function CreateEvent() {
         setShowSuccessModal('yes');
       })
       .catch((err) => {
-        console.log(err?.response.data);
+        alert(err?.response.data);
         setShowSuccessModal('no');
       });
   }
@@ -122,6 +122,16 @@ export default function CreateEvent() {
   //handles form submission
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      !eventTitle ||
+      !eventDescription ||
+      !eventLocation ||
+      !eventStartDate ||
+      !eventEndDate
+    ) {
+      alert('please verify all the mandatory fields');
+      return;
+    }
     newEvent(
       eventTitle,
       eventDescription,

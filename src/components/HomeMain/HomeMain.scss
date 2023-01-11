@@ -4,9 +4,11 @@
 @use '../../styles/partials/colors' as *;
 
 .main {
+  padding: 2rem 1.5rem 0;
   width: 100%;
   &__title {
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     @extend .title;
+    color: $background-blue;
   }
 }

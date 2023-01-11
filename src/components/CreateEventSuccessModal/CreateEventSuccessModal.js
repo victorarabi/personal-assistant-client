@@ -19,9 +19,7 @@ export default function CreateEventSuccessModal({
       <div className="success-modal">
         <h3 className="success-modal__title">Event successfully created</h3>
         <div className="success-modal__event-container">
-          <p className="success-modal__event-title">
-            Title: {newEventData.summary}
-          </p>
+          <p className="success-modal__txt">Title: {newEventData.summary}</p>
           <p className="success-modal__txt">
             Description: {newEventData.description}
           </p>
@@ -40,7 +38,8 @@ export default function CreateEventSuccessModal({
           </Link>
           <button
             className="success-modal__btn success-modal__btn--secondary"
-            onClick={handleOnClick}>
+            onClick={handleOnClick}
+          >
             Create a related event?
           </button>
         </div>

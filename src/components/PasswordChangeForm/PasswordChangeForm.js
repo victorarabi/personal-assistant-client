@@ -48,7 +48,8 @@ export default function PasswordChangeForm({ setShowModal, setModalType }) {
   //Handles submit
   function handleOnClick(e) {
     if (!currentPassword || !newPassword || !newPasswordConf) {
-      alert('Please fill all the password');
+      alert('Please fill all the password fields');
+      return;
     }
     e.preventDefault();
     if (newPassword === newPasswordConf) {
@@ -112,12 +113,14 @@ export default function PasswordChangeForm({ setShowModal, setModalType }) {
         value={newPasswordConf}
         onChange={handlePasswordConfForm}
       />
-      <button className="change-password__btn" onClick={handleOnClick}>
-        Change password
-      </button>
-      <button className="change-password__btn" onClick={handleCancel}>
-        Cancel
-      </button>
+      <div className="change-password__nav-container">
+        <button className="change-password__btn" onClick={handleOnClick}>
+          Change password
+        </button>
+        <button className="change-password__btn" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

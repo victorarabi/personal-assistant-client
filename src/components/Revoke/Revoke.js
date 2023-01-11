@@ -37,14 +37,19 @@ export default function Revoke({ setShowModal, setModalType }) {
       <h1 className="revoke__title">Revoke access to Google Calendar data.</h1>
       <p className="revoke__txt">
         Would you like to revoke the access to your Google Calendar data?
+      </p>
+      <p className="revoke__txt revoke__txt--warning">
         WARNING: THIS ACTION IS IRREVERSIBLE
       </p>
-      <button className="tz-form__btn" onClick={handleOnClick}>
-        Revoke
-      </button>
-      <button className="tz-form__btn" onClick={handleCancel}>
-        Cancel
-      </button>
+
+      <div className="revoke__nav-container">
+        <button className="revoke__btn" onClick={handleOnClick}>
+          Revoke
+        </button>
+        <button className="revoke__btn" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

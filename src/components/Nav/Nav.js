@@ -16,7 +16,7 @@ export default function Nav() {
           <li className="nav__item">Manage Events</li>
         </Link>
         <Link className="nav__link" to="/profile">
-          <li className="nav__item">Profile</li>
+          <li className="nav__item nav__item--last">Profile</li>
         </Link>
       </ul>
     </nav>

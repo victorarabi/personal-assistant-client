@@ -50,7 +50,8 @@ export default function DeleteEventModal({
         className="delete-modal"
         onClick={(e) => {
           e.stopPropagation();
-        }}>
+        }}
+      >
         <h2 className="delete-modal__title">Delete Event?</h2>
         <div className="delete-modal__event-container">
           <p className="delete-modal__txt">Title: {eventToDelete.summary}</p>
@@ -65,20 +66,18 @@ export default function DeleteEventModal({
           </p>
         </div>
         <div className="delete-modal__confirmation">
-          <p className="delete-modal__txt">
+          <p className="delete-modal__sub-title">
             Do you wish to delete the event described above? <br /> NOTE: This
             action is final.
           </p>
-          <button
-            className="delete-modal__button"
-            onClick={handleDeleteOnClick}>
-            Yes
-          </button>
-          <button
-            className="delete-modal__button"
-            onClick={handleCancelOnClick}>
-            Cancel
-          </button>
+          <div className="delete-modal__nav-container">
+            <button className="delete-modal__btn" onClick={handleDeleteOnClick}>
+              Yes
+            </button>
+            <button className="delete-modal__btn" onClick={handleCancelOnClick}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,12 @@
 
 .profile {
   width: 100%;
-  padding-left: 1rem;
+  padding: 2rem 1.5rem 0;
+  &__title {
+    padding-bottom: 1rem;
+    @extend .title;
+    color: $background-blue;
+  }
   &__container {
     display: flex;
     padding-bottom: 0.5rem;
@@ -18,9 +23,22 @@
   &__label {
     padding-right: 0.5rem;
     @extend .label;
+    color: $darkPurple;
   }
   &__text {
-    padding-right: 0.5rem;
+    padding: 0 0.5rem 1rem 0;
     @extend .body;
+    color: $darkPurple;
+  }
+  &__btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    @extend .body;
+    background-color: $lightOrange;
+    color: $white;
+    &--revoke {
+      margin-top: 0.3rem;
+    }
   }
 }

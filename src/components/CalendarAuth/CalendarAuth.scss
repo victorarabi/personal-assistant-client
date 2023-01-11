@@ -1,0 +1,42 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.calendar-auth {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  &__title {
+    padding-bottom: 1rem;
+    @extend .title;
+    color: $background-blue;
+  }
+  &__txt {
+    @extend .body;
+    color: $darkPurple;
+    padding-bottom: 1rem;
+  }
+  &__link {
+    width: fit-content;
+    text-decoration: none;
+    flex-grow: 0;
+    &--settings {
+      text-decoration: underline;
+    }
+  }
+  &__btn {
+    width: fit-content;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background-color: $lightOrange;
+    display: flex;
+    align-items: center;
+    @extend .body;
+    color: $white;
+  }
+  &__icon {
+    width: 3rem;
+    padding-right: 0.5rem;
+  }
+}

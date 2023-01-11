@@ -1,0 +1,40 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.tz-form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    padding-bottom: 1rem;
+    @extend .title;
+    color: $background-blue;
+  }
+  &__label {
+    padding-bottom: 0.25rem;
+    @extend .label;
+    color: $grey;
+  }
+  &__input {
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+    @extend .body;
+    color: $darkPurple;
+  }
+  &__nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: $lightOrange;
+    @extend .body;
+    color: $white;
+  }
+}

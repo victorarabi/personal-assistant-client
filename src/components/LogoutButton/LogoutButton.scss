@@ -9,7 +9,7 @@
   border: none;
   border-radius: 8px;
   background-color: $lightOrange;
-  color: $alabaster;
-  padding: 0.5rem 0.7rem;
-  @extend .sub-title;
+  color: $white;
+  padding: 0.5rem;
+  @extend .body;
 }

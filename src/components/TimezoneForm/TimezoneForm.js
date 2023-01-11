@@ -57,7 +57,7 @@ export default function TimezoneForm({ setShowModal, setModalType }) {
         Please select or write the new timezone:
       </label>
       <input
-        className="tz-form__timezone"
+        className="tz-form__input"
         id="timezone"
         name="timezone"
         list="timezones"
@@ -72,12 +72,14 @@ export default function TimezoneForm({ setShowModal, setModalType }) {
           return <option key={index} value={tz} />;
         })}
       </datalist>
-      <button className="tz-form__btn" onClick={handleChangeSubmit}>
-        Change timezone
-      </button>
-      <button className="tz-form__btn" onClick={handleCancel}>
-        Cancel
-      </button>
+      <div className="tz-form__nav-container">
+        <button className="tz-form__btn" onClick={handleChangeSubmit}>
+          Change timezone
+        </button>
+        <button className="tz-form__btn" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

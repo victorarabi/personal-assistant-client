@@ -6,31 +6,35 @@
 .week {
   width: fit-content;
   height: fit-content;
-  margin: 1rem;
-  border: 0.01rem solid silver;
+  margin: 1rem 0.5rem 0rem;
   border-radius: 0.5rem;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
   padding: 1rem;
+  background-color: $lightOrange;
   &__header {
     width: 100%;
   }
   &__title {
     padding-bottom: 0.5rem;
-    @extend .title;
+    @extend .sub-title;
+    color: $white;
   }
   &__content-container {
     width: fit-content;
-    border: 1px solid gray;
+    border: 1px solid $mercury;
     border-radius: 0.5rem;
+    background-color: $white;
   }
   &__table-list {
     display: flex;
     list-style: none;
   }
   &__table-item {
-    width: 12rem;
-    border-right: 1px solid gray;
+    width: 11.5rem;
+    border-right: 1px solid $mercury;
     padding: 0.5rem;
-    @extend .sub-title;
+    @extend .body;
+    color: $background-blue;
     &--last {
       border: none;
     }
@@ -39,18 +43,19 @@
     display: flex;
   }
   &__table-column {
-    width: 12rem;
+    width: 11.5rem;
     height: 14rem;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid gray;
+    border-right: 1px solid $mercury;
     &--last {
       border: none;
     }
   }
   &__column-item {
-    width: 12rem;
-    padding: 0.5rem;
-    @extend .body;
+    width: 11.5rem;
+    padding: 0.3rem 0.5rem;
+    @extend .label;
+    color: $darkPurple;
   }
 }

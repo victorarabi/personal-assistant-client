@@ -8,7 +8,6 @@
   width: fit-content;
   padding-left: 1rem;
   &__list {
-    gap: 0.5rem;
     display: flex;
     list-style: none;
   }
@@ -22,7 +21,12 @@
     }
   }
   &__item {
+    border-right: 1px solid $mercury;
+    padding: 0 1rem;
     @extend .body;
     color: $lightOrange;
+    &--last {
+      border: none;
+    }
   }
 }

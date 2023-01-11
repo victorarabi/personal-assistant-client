@@ -6,7 +6,7 @@
 .event-card {
   width: 100%;
   height: fit-content;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $mercury;
   &__container {
     padding: 1rem;
     display: flex;
@@ -14,11 +14,35 @@
     justify-content: space-between;
   }
   &__column-wrapper {
-    width: fit-content;
-    height: 200px;
+    width: 12.5rem;
+    height: 12.5rem;
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  &__label {
+    padding-bottom: 0.3rem;
+    @extend .label;
+    color: $grey;
+  }
+  &__txt {
+    padding-bottom: 1rem;
+    @extend .body;
+    color: $darkPurple;
+  }
+  &__btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btn {
+    width: 5rem;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    @extend .body;
+    background-color: $lightOrange;
+    color: $white;
   }
 }

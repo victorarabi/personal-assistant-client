@@ -111,7 +111,7 @@ export default function SignUp({ setIsLoading }) {
           required
           minLength="6"
           maxLength="45"
-          placeholder="Name"
+          placeholder="E-mail"
           value={email}
           onChange={handleEmailForm}
         />

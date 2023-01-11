@@ -6,7 +6,7 @@ export default function Forbidden() {
   return (
     <article className="forbidden">
       <h3 className="forbidden__title">FORBIDDEN</h3>
-      <p className="forbidden__text">Please log in to access this page.</p>
+      <p className="forbidden__txt">Please log in to access this page.</p>
       <Link to={'/'}>
         <button className="forbidden__btn">Home</button>
       </Link>

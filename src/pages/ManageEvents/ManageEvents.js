@@ -31,6 +31,16 @@ export default function ManageEvents() {
   useEffect(() => {
     getEvents();
   }, [setEvents, showDeleteModal, showUpdateModal]);
+  if (!events[0]) {
+    return (
+      <div className="manage-events">
+        <div className="manage-events__container">
+          <h1 className="manage-events__title">Manage Events</h1>
+        </div>
+        <p className="manage-events__txt">You have no events!</p>
+      </div>
+    );
+  }
   return (
     <div className="manage-events">
       <div className="manage-events__container">
